@@ -1,0 +1,8 @@
+﻿  main.cpp
+C:\Users\u2100583\source\repos\Proj_draft1\Proj_draft1\main.cpp(57,27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\u2100583\source\repos\Proj_draft1\Proj_draft1\main.cpp(135,22): warning C4305: '-=': truncation from 'double' to 'float'
+C:\Users\u2100583\source\repos\Proj_draft1\Proj_draft1\main.cpp(137,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\u2100583\source\repos\Proj_draft1\Proj_draft1\main.cpp(150,7): warning C4018: '>': signed/unsigned mismatch
+C:\Users\u2100583\source\repos\Proj_draft1\Proj_draft1\main.cpp(152,7): warning C4018: '>': signed/unsigned mismatch
+C:\Users\u2100583\source\repos\Proj_draft1\Proj_draft1\main.cpp(196,1): warning C4715: 'Enemy::Collision': not all control paths return a value
+  Proj_draft1.vcxproj -> C:\Users\u2100583\source\repos\Proj_draft1\Proj_draft1\x64\Debug\Proj_draft1.exe
