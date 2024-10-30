@@ -16,7 +16,6 @@ public:
 		sprite.load(filename);
 		x = _x - sprite.width / 2;
 		y = _y;
-		
 	};
 
 	void Draw(GamesEngineeringBase::Window& canvas) {
@@ -161,15 +160,16 @@ public:
 //	}
 //};
 
-const unsigned int maxSize1 = 1000;
+const unsigned int maxSize1 = 10000;
 
-class Enemy{//: public CObject {
+class Enemy{ //: public CObject {
 	CObject* enemyArray[maxSize1];
 	unsigned int currentSize = 0;
 	float timeElapsed = 0.f; // time since last enemy created
 	float timeThreshold = 2.f; // the time to next enemy creation
-	int px, py;
-	int offset;
+	int px = 200;
+	int py = 200;
+	int offset=200;
 
 	void Random(GamesEngineeringBase::Window& canvas, int _offset) {
 		offset = _offset;
@@ -274,13 +274,13 @@ public:
 					int moveX = static_cast<int>((dx / distance) * speed);
 					int moveY = static_cast<int>((dy / distance) * speed);
 					enemyArray[i]->Update(moveX, moveY);
-					// CheckDeletedEnemy(canvas, i);
+					CheckDeletedEnemy(canvas, i);
 				}
 			}
 		}
 	}
 
-	void Draw(GamesEngineeringBase::Window& canvas) {
+	void Draw(GamesEngineeringBase::Window canvas) {
 		for (unsigned int i = 0; i < currentSize; i++) {
 			if (enemyArray[i] != nullptr)
 				enemyArray[i]->Draw(canvas);
@@ -297,6 +297,9 @@ public:
 		return false;
 	}
 };
+
+
+
 
 int main() {
 	// srand(static_cast<unsigned int>(time(NULL)));
@@ -337,7 +340,7 @@ int main() {
 		 player.Update(canvas, x, y);
 		//player.update(canvas, x, y);
 		enemy.Update(canvas, dt, player);
-		//enemy.Collision(player);
+		enemy.Collision(player);
 		// Weapon Creation
 
 		// Enemy Creation
@@ -349,7 +352,7 @@ int main() {
 
 		// Display
 		//enemy.Draw(canvas);
-		//player.Draw(canvas);
+		player.Draw(canvas);
 		//player.draw(canvas);
 
 		// Frame display
