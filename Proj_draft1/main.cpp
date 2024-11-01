@@ -292,6 +292,7 @@ public:
 	}
 
 };
+
 const unsigned int tileNum = 23;
 class tileSet {
 	tile tiles[tileNum];
@@ -314,39 +315,60 @@ const int maxSizeY = 150;
 const int maxSizeX = 150;
 class world {
 	tileSet tiles;
-	unsigned int map[maxSizeX][maxSizeY];
+	unsigned int* map;
+	unsigned int size;
+	//unsigned int map[maxSizeX][maxSizeY];
 public:
 	world() {
+		// try use number of tile for whole screen:32*24=768 tiles
+		size = maxSizeX;
+		int screenSize = 768;
+		map = new unsigned int[screenSize];
 		tiles.Load();
-		for (unsigned int i = 0; i < maxSizeX; i++) {
-			for (unsigned int j = 0; j < maxSizeY; j++) {
-				map[i][j] = rand() % tileNum; // randomly choose a tile and put it into 2D array
-				cout << map[i][j] << endl;
-			}
+		//for (unsigned int i = 0; i < maxSizeX; i++) {
+		//	for (unsigned int j = 0; j < maxSizeY; j++) {
+		//		map[i][j] = rand() % tileNum; // randomly choose a tile and put it into 2D array
+		//		// map[i][j] = rand() % tileNum; // randomly choose a tile and put it into 2D array
+		//		cout << map[i][j] << endl;
+		//	}
+		//}
+		for (unsigned int i = 0; i < screenSize; i++) {
+			map[i] = rand() % tileNum; 
+			
 		}
+
 	}
-	void draw(GamesEngineeringBase::Window& canvas, int worldX, int worldY) {
+	~world() {
+		delete[] map;
+	}//int worldX, int worldY
+	void draw(GamesEngineeringBase::Window& canvas, int wy) {
 		int height = tiles[0].GetHeight(); // should not be limited in specific tile, but considering every tile should be sliced to 32*32 for pixel game, so it is fine 
 		int width = tiles[0].GetWidth();
 		// world y position
-		int Y = worldY / height;
+		//int Y = worldY / height;
 		// world x position
-		int X = worldX / width;
+		// int X = worldX / width;
 
-		int rHeight = worldY % height;
-		int rWidth = worldX % width;
+		//int rHeight = worldY % height;
+		//int rWidth = worldX % width;
 		//tiles[map[Y % maxSize]].Draw(canvas, (canvas.getWidth() / 2) + rWidth, (canvas.getHeight() / 2) + rHeight);
 		//tiles[map[(Y + 1) % maxSize]].Draw(canvas, r);
 		//tiles[map[(Y + 2) % maxSize]].Draw(canvas, -height + r);
 		// X: 32, Y: 24
-		// 
+		int tileSize = 32;
 		/* tiles[map[(X) % maxSizeX][(Y) % maxSizeY]].Draw(canvas, (canvas.getWidth() / 2) + rWidth, (canvas.getHeight() / 2) + rHeight);
 		 tiles[map[(X + 1) % maxSizeX][(Y + 1) % maxSizeY]].Draw(canvas, rWidth, rHeight);
 		 tiles[map[(X + 2) % maxSizeX][(Y + 2) % maxSizeY]].Draw(canvas, -height+rHeight, -width + rWidth);*/
 		for (unsigned i = 0; i < canvas.getWidth()/width; i++) {
 			for (unsigned j = 0; j < canvas.getHeight()/height; j++) {
-				
-				tiles[map[(X + i) % maxSizeX][(Y + j) % maxSizeY]].Draw(canvas, (canvas.getWidth() / 2) + rWidth, (canvas.getHeight() / 2) + rHeight);
+
+				int posX = i * tileSize;
+				int posY = j * tileSize + (wy % tileSize); // scrolling effect
+
+				int tileIndex = map[(j * 32 + i) % size];
+				tiles[tileIndex].Draw(canvas,posX,posY);
+
+				// tiles[map[(X + i) % maxSizeX][(Y + j) % maxSizeY]].Draw(canvas, (canvas.getWidth() / 2) + rWidth, (canvas.getHeight() / 2) + rHeight);
 				//tiles[map[(X + 1+i) % maxSizeX][(Y + 1) % maxSizeY]].Draw(canvas, rWidth, rHeight);
 				//tiles[map[(X + 2+i) % maxSizeX][(Y + 2) % maxSizeY]].Draw(canvas, -height + rHeight, -width + rWidth);
 				//
@@ -355,6 +377,31 @@ public:
 			}
 		}
 	}
+
+	//void draw(GamesEngineeringBase::Window& canvas, int wy) {
+	//	int tileSize = 32; // size of each square tile
+	//	int screenWidth = canvas.getWidth();
+	//	int screenHeight = canvas.getHeight();
+
+	//	int numTilesX = screenWidth / tileSize; // number of tiles horizontally
+	//	int numTilesY = screenHeight / tileSize; // number of tiles vertically
+
+	//	// Loop through each position in the grid
+	//	for (int y = 0; y < numTilesY; ++y) {
+	//		for (int x = 0; x < numTilesX; ++x) {
+	//			// Calculate a pseudo-random tile index for each position
+	//			int tileIndex = a[(y * numTilesX + x) % size];
+
+	//			// Calculate the position of each tile
+	//			int posX = x * tileSize;
+	//			int posY = y * tileSize + (wy % tileSize); // scrolling effect
+
+	//			// Draw the tile at the calculated position
+	//			tiles[tileIndex].Draw(canvas, posX, posY);
+	//		}
+	//	}
+	//}
+
 };
 
 
@@ -424,7 +471,7 @@ int main() {
 		
 		//		canvas.draw(tempx, tempy, 0, 0, 255);
 		
-		w.draw(canvas, x,y);
+		w.draw(canvas, y);
 		
 		
 		// Display

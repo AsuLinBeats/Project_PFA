@@ -3,11 +3,15 @@
   "WorkspaceRootPath": "C:\\Users\\Davi\\source\\Project_PFA\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F7FCC00E-116E-4018-9826-7E06380E510C}|Proj_draft1\\Proj_draft1.vcxproj|C:\\Users\\Davi\\source\\Project_PFA\\Proj_draft1\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F7FCC00E-116E-4018-9826-7E06380E510C}|Proj_draft1\\Proj_draft1.vcxproj|solutionrelative:Proj_draft1\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Davi\\Downloads\\river (2).cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Davi\\Downloads\\river (2).cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{D0CE7240-998A-4743-A0D5-37C86E16E335}|Test\\Test.vcxproj|C:\\Users\\Davi\\source\\Project_PFA\\Test\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{D0CE7240-998A-4743-A0D5-37C86E16E335}|Test\\Test.vcxproj|solutionrelative:Test\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F7FCC00E-116E-4018-9826-7E06380E510C}|Proj_draft1\\Proj_draft1.vcxproj|C:\\Users\\Davi\\source\\Project_PFA\\Proj_draft1\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F7FCC00E-116E-4018-9826-7E06380E510C}|Proj_draft1\\Proj_draft1.vcxproj|solutionrelative:Proj_draft1\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\crt\\src\\vcruntime\\delete_scalar.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
@@ -23,7 +27,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 223,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -31,7 +35,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\Davi\\source\\Project_PFA\\Test\\main.cpp",
+              "RelativeDocumentMoniker": "Test\\main.cpp",
+              "ToolTip": "C:\\Users\\Davi\\source\\Project_PFA\\Test\\main.cpp",
+              "RelativeToolTip": "Test\\main.cpp",
+              "ViewState": "AgIAADABAAAAAAAAAAAYwPwAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-11-01T21:30:16.987Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "templates.cpp",
               "DocumentMoniker": "C:\\Users\\Davi\\Downloads\\templates.cpp",
               "RelativeDocumentMoniker": "..\\..\\Downloads\\templates.cpp",
@@ -39,12 +56,11 @@
               "RelativeToolTip": "..\\..\\Downloads\\templates.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-10-31T17:16:19.919Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-31T17:16:19.919Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "delete_scalar.cpp",
               "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\crt\\src\\vcruntime\\delete_scalar.cpp",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\crt\\src\\vcruntime\\delete_scalar.cpp",
@@ -52,18 +68,17 @@
               "RelativeToolTip": "..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.41.34120\\crt\\src\\vcruntime\\delete_scalar.cpp",
               "ViewState": "AgIAABcAAAAAAAAAAAAYwCEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-10-30T20:09:53.787Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-30T20:09:53.787Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "main.cpp",
               "DocumentMoniker": "C:\\Users\\Davi\\source\\Project_PFA\\Proj_draft1\\main.cpp",
               "RelativeDocumentMoniker": "Proj_draft1\\main.cpp",
               "ToolTip": "C:\\Users\\Davi\\source\\Project_PFA\\Proj_draft1\\main.cpp",
               "RelativeToolTip": "Proj_draft1\\main.cpp",
-              "ViewState": "AgIAAC0BAAAAAAAAAAAewD0BAAAHAAAAAAAAAA==",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAAF0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-10-30T20:09:28.525Z",
               "EditorCaption": ""
@@ -76,13 +91,13 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "river (2).cpp",
               "DocumentMoniker": "C:\\Users\\Davi\\Downloads\\river (2).cpp",
               "RelativeDocumentMoniker": "..\\..\\Downloads\\river (2).cpp",
               "ToolTip": "C:\\Users\\Davi\\Downloads\\river (2).cpp",
               "RelativeToolTip": "..\\..\\Downloads\\river (2).cpp",
-              "ViewState": "AgIAAJYAAAAAAAAAAAAAAKIAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAAIoAAAAAAAAAAAAAAKUAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-11-01T10:11:50.833Z",
               "EditorCaption": ""
