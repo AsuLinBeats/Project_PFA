@@ -137,24 +137,33 @@
     <Image Include="L2.png" />
     <Image Include="Resources\0.png" />
     <Image Include="Resources\1.png" />
+    <Image Include="Resources\10.png" />
+    <Image Include="Resources\11.png" />
+    <Image Include="Resources\12.png" />
+    <Image Include="Resources\13.png" />
+    <Image Include="Resources\14.png" />
+    <Image Include="Resources\15.png" />
+    <Image Include="Resources\16.png" />
+    <Image Include="Resources\17.png" />
+    <Image Include="Resources\18.png" />
+    <Image Include="Resources\19.png" />
     <Image Include="Resources\2.png" />
+    <Image Include="Resources\20.png" />
+    <Image Include="Resources\21.png" />
+    <Image Include="Resources\22.png" />
+    <Image Include="Resources\23.png" />
     <Image Include="Resources\3.png" />
     <Image Include="Resources\4.png" />
     <Image Include="Resources\5.png" />
-    <Image Include="Resources\a0.png" />
-    <Image Include="Resources\a1.png" />
-    <Image Include="Resources\a2.png" />
-    <Image Include="Resources\a3.png" />
-    <Image Include="Resources\a4.png" />
-    <Image Include="Resources\a5.png" />
-    <Image Include="Resources\alpha0.png" />
-    <Image Include="Resources\alpha1.png" />
-    <Image Include="Resources\alpha2.png" />
-    <Image Include="Resources\alpha3.png" />
-    <Image Include="Resources\alpha4.png" />
-    <Image Include="Resources\alpha5.png" />
+    <Image Include="Resources\6.png" />
+    <Image Include="Resources\7.png" />
+    <Image Include="Resources\8.png" />
+    <Image Include="Resources\9.png" />
     <Image Include="Resources\L.png" />
     <Image Include="Resources\L2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Resources\tiles.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
