@@ -205,15 +205,7 @@ class Enemy{ //: public CObject {
 		}
 	}
 
-	//void CheckDeletedEnemy(GamesEngineeringBase::Window& canvas, unsigned int i) {
-	//	if (i >= maxSize1 || enemyArray[i] == nullptr) return; // Null check
 
-	//	if (isOutBound(enemyArray[i]->GetX(), enemyArray[i]->GetY(), canvas, 250)) {
-	//		delete enemyArray[i]; // Delete once
-	//		enemyArray[i] = nullptr; // Set to nullptr to avoid double deletion
-	//		cout << "destroyed " << i << endl;
-	//	}
-	//}
 
 public:
 	Enemy() { };
@@ -261,22 +253,21 @@ public:
 	}
 };
 
-
 // Tiles:
 class tile {
 	GamesEngineeringBase::Image sprite;
 public:
-	tile(){}
+	tile() {}
 	void Load(string filename) {
 		sprite.load(filename);
 	}
-	void Draw(GamesEngineeringBase::Window& canvas,int x, int y) {
+	void Draw(GamesEngineeringBase::Window& canvas, int x, int y) {
 		// Draw objects to screen in its original material
 		for (unsigned int i = 0; i < sprite.width; i++) {
 			if (x + i > 0 && x + i < canvas.getWidth()) {
 				for (unsigned int j = 0; j < sprite.height; j++) {
 					if (y + j > 0 && y + j < canvas.getHeight()) {
-						canvas.draw(i, y + j, sprite.atUnchecked(i, j));
+						canvas.draw(x + i, y + j, sprite.atUnchecked(i, j));
 					}
 				}
 			}
@@ -306,119 +297,83 @@ public:
 		}
 	}
 	// overload [] to access individual elements from array directly
-	 tile& operator[](unsigned int index)
-	 { return tiles[index]; } 
+	tile& operator[](unsigned int index)
+	{
+		return tiles[index];
+	}
 
 };
 
-const int maxSizeY = 150;
-const int maxSizeX = 150;
+const int maxSizeY = 200;
+const int maxSizeX = 200;
+
 class world {
 	tileSet tiles;
-	unsigned int* map;
+	// unsigned int* map;
 	unsigned int size;
-	//unsigned int map[maxSizeX][maxSizeY];
+	unsigned int map[maxSizeX][maxSizeY];
+
+	// int map1[32][24];
 public:
 	world() {
 		// try use number of tile for whole screen:32*24=768 tiles
+		// try AREA method
 		size = maxSizeX;
-		int screenSize = 768;
-		map = new unsigned int[screenSize];
+		// map = new unsigned int[maxSizeX][maxSizeY];
 		tiles.Load();
-		//for (unsigned int i = 0; i < maxSizeX; i++) {
-		//	for (unsigned int j = 0; j < maxSizeY; j++) {
-		//		map[i][j] = rand() % tileNum; // randomly choose a tile and put it into 2D array
-		//		// map[i][j] = rand() % tileNum; // randomly choose a tile and put it into 2D array
-		//		cout << map[i][j] << endl;
-		//	}
-		//}
-		for (unsigned int i = 0; i < screenSize; i++) {
-			map[i] = rand() % tileNum; 
-			
+
+
+		for (unsigned int i = 0; i < maxSizeX; i++) {
+			for (unsigned int j = 0; j < maxSizeY; j++) {
+				map[i][j] = rand() % tileNum; // randomly choose a tile and put it into 2D array
+				// map[i][j] = rand() % tileNum; // randomly choose a tile and put it into 2D array
+				cout << map[i][j] << endl;
+			}
 		}
 
 	}
-	~world() {
-		delete[] map;
-	}//int worldX, int worldY
-	void draw(GamesEngineeringBase::Window& canvas, int wy) {
+	//~world() {
+	//	delete[] map;
+	//}//int worldX, int worldY
+	void draw(GamesEngineeringBase::Window& canvas, int wx, int wy) {
 		int height = tiles[0].GetHeight(); // should not be limited in specific tile, but considering every tile should be sliced to 32*32 for pixel game, so it is fine 
 		int width = tiles[0].GetWidth();
-		// world y position
-		//int Y = worldY / height;
-		// world x position
-		// int X = worldX / width;
 
-		//int rHeight = worldY % height;
-		//int rWidth = worldX % width;
-		//tiles[map[Y % maxSize]].Draw(canvas, (canvas.getWidth() / 2) + rWidth, (canvas.getHeight() / 2) + rHeight);
-		//tiles[map[(Y + 1) % maxSize]].Draw(canvas, r);
-		//tiles[map[(Y + 2) % maxSize]].Draw(canvas, -height + r);
-		// X: 32, Y: 24
+		int Y = wy / height;
+		int rY = wy % height;
+
+		int X = wx / width;
+		int rX = wx % width;
+
 		int tileSize = 32;
-		/* tiles[map[(X) % maxSizeX][(Y) % maxSizeY]].Draw(canvas, (canvas.getWidth() / 2) + rWidth, (canvas.getHeight() / 2) + rHeight);
-		 tiles[map[(X + 1) % maxSizeX][(Y + 1) % maxSizeY]].Draw(canvas, rWidth, rHeight);
-		 tiles[map[(X + 2) % maxSizeX][(Y + 2) % maxSizeY]].Draw(canvas, -height+rHeight, -width + rWidth);*/
-		for (unsigned i = 0; i < canvas.getWidth()/width; i++) {
-			for (unsigned j = 0; j < canvas.getHeight()/height; j++) {
+		for (unsigned i = 0; i < canvas.getWidth() / width; i++) {
+			for (unsigned j = 0; j < canvas.getHeight() / height; j++) {
+				//int tileIndex = map[(j * 32 + i) % size];
+				//tiles[tileIndex].Draw(canvas, posX, posY);
 
-				int posX = i * tileSize;
-				int posY = j * tileSize + (wy % tileSize); // scrolling effect
+				tiles[map[(X + i) % maxSizeX][(Y + j) % maxSizeY]].Draw(canvas, 32 * i, 32 * j);
 
-				int tileIndex = map[(j * 32 + i) % size];
-				tiles[tileIndex].Draw(canvas,posX,posY);
-
-				// tiles[map[(X + i) % maxSizeX][(Y + j) % maxSizeY]].Draw(canvas, (canvas.getWidth() / 2) + rWidth, (canvas.getHeight() / 2) + rHeight);
-				//tiles[map[(X + 1+i) % maxSizeX][(Y + 1) % maxSizeY]].Draw(canvas, rWidth, rHeight);
-				//tiles[map[(X + 2+i) % maxSizeX][(Y + 2) % maxSizeY]].Draw(canvas, -height + rHeight, -width + rWidth);
-				//
-				// tiles[map[(X+i) % maxSize]].Draw(canvas, (canvas.getWidth() / 2) + rWidth, (canvas.getHeight() / 2) + rHeight);
-				//tiles[map[(X + i) % maxSizeX][(Y + j) % maxSizeY]].Draw(canvas, (i * width) - rWidth + (canvas.getWidth() / 2), (j * height) - rHeight + (canvas.getHeight() / 2));
 			}
 		}
 	}
 
-	//void draw(GamesEngineeringBase::Window& canvas, int wy) {
-	//	int tileSize = 32; // size of each square tile
-	//	int screenWidth = canvas.getWidth();
-	//	int screenHeight = canvas.getHeight();
-
-	//	int numTilesX = screenWidth / tileSize; // number of tiles horizontally
-	//	int numTilesY = screenHeight / tileSize; // number of tiles vertically
-
-	//	// Loop through each position in the grid
-	//	for (int y = 0; y < numTilesY; ++y) {
-	//		for (int x = 0; x < numTilesX; ++x) {
-	//			// Calculate a pseudo-random tile index for each position
-	//			int tileIndex = a[(y * numTilesX + x) % size];
-
-	//			// Calculate the position of each tile
-	//			int posX = x * tileSize;
-	//			int posY = y * tileSize + (wy % tileSize); // scrolling effect
-
-	//			// Draw the tile at the calculated position
-	//			tiles[tileIndex].Draw(canvas, posX, posY);
-	//		}
-	//	}
-	//}
 
 };
 
 
-
 int main() {
-	srand(static_cast<unsigned int>(time(NULL)));
+	srand(static_cast<unsigned int>(time(NULL))); // make sure number are number each time
 	// construct windows
 	GamesEngineeringBase::Window canvas;
 	canvas.create(1024, 768, "Survivor");
-	
+
 	// construct objects
 	CObject player(canvas.getWidth() / 2, canvas.getHeight() / 2, "Resources/L.png");
 
-	Enemy enemy;
+	// Enemy enemy;
 	world w;
-	GamesEngineeringBase::Timer tim;
-	int x,y = 0; // position of hero
+	// GamesEngineeringBase::Timer tim;
+	int x = 0, y = 0; // position of hero
 	bool running = true; // To control game main loop
 
 	tileSet tiles;
@@ -428,7 +383,7 @@ int main() {
 
 		// variables needs to be updated each frame
 
-		
+
 
 		// Functions implementation
 		// check input
@@ -436,44 +391,21 @@ int main() {
 		// clear windows for next frame
 		canvas.clear();
 
-	
+
 		//float dt = tim.dt();
 		float dt = 0.025f;
 		// int move = static_cast<int>((500.f * dt));
 		// move function implementation
+
 		if (canvas.keyPressed(VK_ESCAPE)) break;
 		if (canvas.keyPressed('W')) y -= 2;
 		if (canvas.keyPressed('S')) y += 2;
 		if (canvas.keyPressed('A')) x -= 2;
 		if (canvas.keyPressed('D')) x += 2;
 
-		if (canvas.keyPressed(VK_ESCAPE)) break;
-		if (canvas.keyPressed('W')) y += 5;
-		if (canvas.keyPressed('S')) y -= 1;
-		if (canvas.keyPressed('A')) player.Update(-2,0);
-		if (canvas.keyPressed('D')) player.Update(2,0);
-
-		// Hero Creation
-		// player.Update(canvas, canvas.getWidth()/2, canvas.getHeight()/2);
-		 player.Update(canvas, x,y);
+		w.draw(canvas, x, y);
 
 
-		// Enemy Creation
-		// enemy.Update(canvas, player, dt);
-		// enemy.Collision(player);
-		// Weapon Creation
-
-
-
-		// Draw canvas
-		//for (unsigned int tempx = 0; tempx < canvas.getWidth(); tempx++)
-		//	for (unsigned int tempy = 0; tempy < canvas.getHeight(); tempy++)
-		
-		//		canvas.draw(tempx, tempy, 0, 0, 255);
-		
-		w.draw(canvas, y);
-		
-		
 		// Display
 		// enemy.Draw(canvas);
 		player.Draw(canvas);
