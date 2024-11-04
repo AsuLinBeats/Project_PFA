@@ -370,7 +370,7 @@ int main() {
 	// construct objects
 	CObject player(canvas.getWidth() / 2, canvas.getHeight() / 2, "Resources/L.png");
 
-	// Enemy enemy;
+	Enemy enemy;
 	world w;
 	// GamesEngineeringBase::Timer tim;
 	int x = 0, y = 0; // position of hero
@@ -404,13 +404,14 @@ int main() {
 		if (canvas.keyPressed('D')) x += 2;
 
 		w.draw(canvas, x, y);
+		enemy.Update(canvas, player, dt);
 
 
 		// Display
-		// enemy.Draw(canvas);
+		enemy.Draw(canvas);
 		player.Draw(canvas);
 		//player.draw(canvas);
-
+		
 		// Frame display
 		canvas.present();
 	}
