@@ -1,1 +1,14 @@
-﻿  Test.vcxproj -> C:\Users\u2100583\source\Project_PFA\x64\Release\Test.exe
+﻿  main.cpp
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(23,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(23,9): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(25,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(26,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(28,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(90,27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(236,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(237,31): warning C4018: '<': signed/unsigned mismatch
+  Generating code
+  Previous IPDB and IOBJ mismatch, fall back to full compilation.
+  All 400 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Test.vcxproj -> C:\Users\Davi\source\Project_PFA\x64\Release\Test.exe
