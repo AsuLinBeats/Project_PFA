@@ -160,6 +160,10 @@
     <Image Include="Resources\L.png" />
     <Image Include="Resources\L2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\projectile1.svg" />
+    <None Include="Resources\projectile2.svg" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

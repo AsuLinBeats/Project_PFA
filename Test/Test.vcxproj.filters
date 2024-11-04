@@ -104,4 +104,12 @@
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\projectile1.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Resources\projectile2.svg">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>

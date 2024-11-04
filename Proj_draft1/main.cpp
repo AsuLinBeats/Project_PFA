@@ -220,7 +220,7 @@ public:
 
 		for (unsigned int i = 0; i < currentSize; i++) {
 			if (enemyArray[i] != nullptr) {
-				// calculate direction between player and enemy
+				// calculate distance between player and enemy
 				float dx = player.GetX() - enemyArray[i]->GetX();
 				float dy = player.GetY() - enemyArray[i]->GetY();
 				float distance = sqrtf(dx * dx + dy * dy);
