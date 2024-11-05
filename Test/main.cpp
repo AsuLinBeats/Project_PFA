@@ -1,23 +1,45 @@
-#include<iostream>
+﻿#include<iostream>
 #include<fstream>
 #include"GamesEngineeringBase.h"
 using namespace std;
-//
-//int* StringToArray(string s) {
-//	int length = s.length();
-//
-//	// create empty array based on length of string;
-//	int array[length] = { 0 };
-//
-//	for (unsigned int i = 0; i < length; i++) {
-//		if (array[i] != "," || array[i] != " ") {
-//			static_cast<int>(array[i]);
-//		}
-//	}
-//	return array;
-//
-//}
+
+int* StringToArray(string s, int * array) {
+	int index = 0;
+	int currentNumber = 0;
+	bool isNumber = false;
+
+	for (unsigned int i = 0; s[i] != '\0'; i++) {
+		if (s[i] >= '0' && s[i] <= '9') {
+			// Transfer string to number
+			currentNumber = currentNumber * 10 + (s[i] - '0');
+			isNumber = true;
+		}
+		else if (s[i] == ',' && isNumber) {
+			// case when meeting ,
+			array[index++] = currentNumber;
+			currentNumber = 0;
+			isNumber = false;
+		}
+
+	}
+
+}
 void drawCircle(GamesEngineeringBase::Window& canvas, int cx, int cy, int r) {
+	int r2 = r * r;
+	for (int x = -r; x < r + 1; x++) {
+		int y = sqrtf(r2 - (x * x));
+
+		if (cx + x > 0 && cx + x < canvas.getWidth()) {
+			if (cy + y > 0 && cy + y < canvas.getHeight())
+				canvas.draw(cx + x, cy + y, 255, 0, 0);
+			if (cy - y > 0 && cy - y < canvas.getHeight())
+				canvas.draw(cx + x, cy - y, 255, 0, 0);
+		}
+		//cout << cx + x << '\t' << cy + y << endl;
+	}
+}
+
+void drawBox(GamesEngineeringBase::Window& canvas, int cx, int cy, int r) {
 	int r2 = r * r;
 	for (int x = -r; x < r + 1; x++) {
 		int y = sqrtf(r2 - (x * x));
@@ -37,9 +59,10 @@ class CObject
 {
 	// 
 protected:
-	int x, y;
+	
 	GamesEngineeringBase::Image sprite;
 public:
+	int x, y;
 	CObject(int _x, int _y, string filename) {
 		sprite.load(filename);
 		x = _x - sprite.width / 2;
@@ -141,6 +164,8 @@ public:
 		return sprite.width;
 	}
 
+
+
 	GamesEngineeringBase::Image GetSprite() {
 		return sprite;
 	}
@@ -166,6 +191,31 @@ public:
 
 };
 
+class BoxCollider {
+public:
+	int x, y;
+	int tilesize;
+	BoxCollider(int _x, int _y, int _tilesize) {
+		x = _x;
+		y = _y;
+		tilesize = _tilesize;
+
+	}
+	bool isCollision(CObject& player) {
+		// Assume each box is 32x32
+		// Check collision between this and other objects
+
+		// Euclidean distance of two objects
+		if (x < player.GetX() + player.GetWidth() && x + tilesize > player.GetX() &&
+			y < player.GetY() + player.GetHeight() && y + tilesize > player.GetY()) {
+			cout << "box collision detected" << endl;
+			return true;
+		}
+		else { return false; }
+	};
+};
+
+
 const int maxSizeY = 200;
 const int maxSizeX = 200;
 
@@ -174,9 +224,10 @@ class world {
 	tileSet alphas;
 	// unsigned int* map;
 	unsigned int size;
-	unsigned int map[maxSizeX][maxSizeY];
 	unsigned int* map1;
-	unsigned finiteMap[42][32];
+	unsigned finiteMap[200][40];
+public: unsigned int map[maxSizeX][maxSizeY];
+
 	// int map1[32][24];
 public:
 	world() {
@@ -189,8 +240,7 @@ public:
 		for (unsigned int i = 0; i < maxSizeX; i++) {
 			for (unsigned int j = 0; j < maxSizeY; j++) {
 				map[i][j] = rand() % tileNum; // randomly choose a tile and put it into 2D array
-				// map[i][j] = rand() % tileNum; // randomly choose a tile and put it into 2D array
-				cout << map[i][j] << endl;
+				cout << "map[i][j]" << map[i][j] << endl;
 			}
 		}
 	}
@@ -226,17 +276,94 @@ public:
 			cout << "Error opening file: " << filename << std::endl;
 			return;
 		}
-		string s;
-
-		//while (getline(infile, s)) {
-		//	cout << s << endl;
-		//	map[]
+		//while (!infile.eof()) {
+		//	infile >> ch;
+		//	cout << "ch is " << ch << endl;
+		//}
+	//	while (getline(infile, s)) {
+			// access each line
+		//for (unsigned int z = 0; z < tileshigh; z++) {
+		//	cout << "s is " << s << endl;
+		//	for (unsigned int i = 0; i < tileswide; i++) {
+		//		for (unsigned int j = 0; j < tileshigh; j++) {
+		//			cout << s[z] << endl;
+		//			
+		//		}
+		//	}
+		//	//}
 		//}
 
-		for (unsigned int i = 0; i < tileswide; i++) {
-			for (unsigned int j = 0; j < tileshigh; j++) {
-				getline(infile, s);
-				for (unsigned z = 0; z < s.size(); z++) {
+		int i = 0, j = 0;
+		char ch;
+		int num = 0;
+		bool readingNumber = false;
+
+		while (infile.get(ch)) {
+			if (ch >= '0' && ch <= '9') {
+				// Accumulate the number character by character
+				num = num * 10 + (ch - '0'); // transfer to int
+				readingNumber = true;
+				cout << num << endl;
+			}
+			else if (ch == ',' || ch == '\n') {
+				// If we encounter a comma or newline, we complete the current number
+				if (readingNumber) {
+					if (i < 200 && j < 200) {
+						map[i][j] = num;
+						
+						j++;
+						if (j >= 200) { // Move to the next row if column limit is reached
+							j = 0;
+							i++;
+						}
+					}
+					num = 0;           // Reset num for the next number
+					readingNumber = false; // Reset flag
+				}
+
+				// If newline is encountered, reset column and go to next row
+				if (ch == '\n') {
+					j = 0;
+					i++;
+				}
+			}
+		}
+
+		// Edge case: if file doesn't end with a newline, ensure the last number is added
+		if (readingNumber && i < 200 && j < 200) {
+			map[i][j] = num;
+		}
+
+		
+		//// Read each line
+		//while (getline(infile, line)) {
+		//	istringstream stream(line);
+		//	string number;
+
+		//	// Split by commas
+		//	while (getline(stream, number, ',')) {
+		//		if (i < 42 && j < 42) {
+		//			map[i][j] = std::stoi(number); // Convert string to integer
+		//			j++;
+		//			if (j >= 42) { // Move to the next row if column limit is reached
+		//				j = 0;
+		//				i++;
+		//			}
+		//		}
+		//	}
+		//}
+		
+		
+
+		//for (unsigned int i = 0; i < tileswide; i++) {
+		//	for (unsigned int j = 0; j < tileshigh; j++) {
+		//		getline(infile, s);
+		//		cout << s << endl;
+				//if (i < tileswide && j < tileshigh) {
+				//	map[i][j] = stoi(s);
+				//	cout << "map[" << i << "][" << j << "] is" << map[i][j] << endl;
+				//}
+				/*for (unsigned z = 0; z < s.size(); z++) {
 					char ch = s[z];
 					cout << "ch is " << ch << endl;
 					if (ch != ',' && ch != ' ') {
@@ -244,14 +371,16 @@ public:
 						cout << "number of tile is " << number << endl;
 						map[i][j] = number;
 					}
-				}
-			}
+				}*/
+
+
+			
 			//std::cout << "Tile number: " << tilenum << std::endl;
 
 
 			infile.close();
 		}
-	}
+	
 
 		//for (unsigned int i = 0; i < 32; i++) {
 //	for (unsigned int j = 0; j < 24; j++) {
@@ -284,10 +413,7 @@ public:
 		int tileSize = 32;
 		for (unsigned i = 0; i < canvas.getWidth() / width; i++) {
 			for (unsigned j = 0; j < canvas.getHeight() / height; j++) {
-					//int tileIndex = map[(j * 32 + i) % size];
-					//tiles[tileIndex].Draw(canvas, posX, posY);
-
-					tiles[map[(X + i) % maxSizeX][(Y + j) % maxSizeY]].Draw(canvas, 32 * i, 32 * j);
+				tiles[map[(X + i) % maxSizeX][(Y + j) % maxSizeY]].Draw(canvas, 32 * i, 32 * j);
 			}
 		}
 	}
@@ -300,43 +426,48 @@ public:
 		//}
 
 		//bool collision(GamesEngineeringBase::Window& canvas, CObject& player, unsigned worldX, unsigned worldY) {
-		//	 Use worldX and worldY in place of wx and wy
+		//	 //Use worldX and worldY in place of wx and wy
 		//	bool b1 = testline(canvas, player.GetX(), player.GetY(), player.GetWidth(), player.GetHeight(), worldX, worldY, player.GetHeight() / 3);
 		//	bool b2 = testline(canvas, player.GetX() + 19, player.GetY() + 10, player.GetWidth() - 5, player.GetHeight() - 5, worldX, worldY, (player.GetHeight() / 2) - 1);
 
-		//	 Use logical AND (&&) for boolean logic
+		//	 //Use logical AND (&&) for boolean logic
 		//	return b1 && b2;
 		//}
+	bool CheckCollidor(CObject& player, int x, int y) {
+		
+	}
 
 
-//private:
-//	bool testline(GamesEngineeringBase::Window& canvas, unsigned int playerX, unsigned int playerY, unsigned int playerWidth, unsigned playerHeight, unsigned int worldX, unsigned int worldY,unsigned int offset) {
-//		bool col = false;
-//		int Y = (worldY + offset) / 32;
-//		int X = (worldX + offset) / 32;
-//
-//		tile& t = alphas[map[X % size][Y % size]];
-//
-//		unsigned int y = t.GetHeight() - ((offset + worldY) % 32); // calculate y position within the tile
-//		unsigned int x = t.GetWidth() - ((offset + worldX) % 32); // calculate x position within the tile
-//
-//		for (unsigned int i = playerX; i < playerX + playerWidth; i++) {
-//			for (unsigned int j = playerY; j < playerY + playerHeight; j++) {
-//
-//				if (i > canvas.getWidth() || j > canvas.getHeight()) continue;
-//
-//				if (t.GetSprite().at(i, y, 0) < 100) {
-//					canvas.draw(i, canvas.getHeight() - offset, 255, 0, 0); // draw line around plane
-//					col = true;
-//				}
-//				else {
-//					canvas.draw(i, canvas.getHeight() - offset, 0, 255, 0);
-//				}
-//
-//			}
-//		}
-//		return col;
-//	}
+private:
+	//bool testline(GamesEngineeringBase::Window& canvas, unsigned int playerX, unsigned int playerY, unsigned int playerWidth, unsigned playerHeight, unsigned int worldX, unsigned int worldY,unsigned int offset) {
+	//	bool col = false;
+	//	int Y = (worldY + offset) / 32;
+	//	int X = (worldX + offset) / 32;
+
+	//	tile& t = alphas[map[X % size][Y % size]];
+
+	//	unsigned int y = t.GetHeight() - ((offset + worldY) % 32); // calculate y position within the tile
+	//	unsigned int x = t.GetWidth() - ((offset + worldX) % 32); // calculate x position within the tile
+
+	//	for (unsigned int i = playerX; i < playerX + playerWidth; i++) {
+	//		for (unsigned int j = playerY; j < playerY + playerHeight; j++) {
+
+	//			if (i > canvas.getWidth() || j > canvas.getHeight()) continue;
+
+	//			if (t.GetSprite().at(i, y, 0) < 100) {
+	//				canvas.draw(i, canvas.getHeight() - offset, 255, 0, 0); // draw line around plane
+	//				col = true;
+	//			}
+	//			else {
+	//				canvas.draw(i, canvas.getHeight() - offset, 0, 255, 0);
+	//			}
+
+	//		}
+	//	}
+	//	return col;
+	//}
+
+
 	};
 
 
@@ -528,6 +659,26 @@ public:
 	//	}
 	//};
 
+//void UIchoice(bool& running, bool&running1) {
+//	GamesEngineeringBase::Window menu;
+//	menu.create(1024, 768, "menu");
+//	bool menu1 = true;
+//	while (menu1) {
+//		CObject logo(menu.getWidth() / 2, menu.getHeight(), "Resources/L.png");
+//		CObject choice1(menu.getWidth() / 2, menu.getHeight() / 5 * 4, "Resources/L.png");
+//		CObject choice2(menu.getWidth() / 2, menu.getHeight() / 5 * 3, "Resources/L.png");
+//		CObject choice3(menu.getWidth() / 2, menu.getHeight() / 5 * 2, "Resources/L.png");
+//		CObject notice(menu.getWidth() / 2, menu.getHeight() / 5, "Resources/L.png"); // notice player to press keys
+//		if (score > 1000){
+//			CObject egg(menu.getWidth()/5, menu.getHeight() , "Resources/L.png"); // eggs to hiddern level
+//		}
+//		if (menu.keyPressed(VK_ESCAPE)) break;
+//		if (menu.keyPressed('1')) running = true;
+//		if (menu.keyPressed('2')) running1 = true;
+//	}
+//
+//}
+
 	int main() {
 		srand(static_cast<unsigned int>(time(NULL))); // make sure number are number each time
 		// construct windows
@@ -543,7 +694,7 @@ public:
 		// GamesEngineeringBase::Timer tim;
 		int x = 0, y = 0; // position of hero
 		bool running = true; // To control game main loop
-
+		bool running1 = false;
 		tileSet tiles;
 		tiles.Load();
 		// game runniung
@@ -595,15 +746,38 @@ public:
 			//		canvas.draw(tempx, tempy, 0, 0, 255);
 
 			w.draw(canvas, x, y);
-			// w.collision(canvas, player, x, y);
+			for (unsigned i = 0; i < 100; i++) {
+				for (unsigned j = 0; j < 100; j++) {
+					//cout << "map[i][j] reading" << w.map[i][j] << endl;
 
+					if ((w.map[i][j] >= 14) && (w.map[i][j] <= 22)) {
+
+						//! here the map[i][j] remains unchanged even we apply true random, needs to find why
+						cout << "collision applied for this tile: " << w.map[i][j] << endl;
+						int tileX = i * 32;
+						int tileY = j * 32;
+						BoxCollider boxcollision(tileX, tileY, 32);
+						// return(boxcollision.isCollision(player));
+
+						// return boxCollidor(player, x, y);
+
+					}
+						
+					
+				}
+			}
+			//w.CheckCollidor(player, x, y);
 			// Display
 			// enemy.Draw(canvas);
-			/////////// player.Draw(canvas);
+			player.Draw(canvas);
 			//player.draw(canvas);
 
 			// Frame display
 			canvas.present();
+		}
+
+		while (running1) {
+
 		}
 		return 0;
 	}
