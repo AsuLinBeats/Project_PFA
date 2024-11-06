@@ -181,6 +181,7 @@
     <Image Include="Resources\alpha7.png" />
     <Image Include="Resources\alpha8.png" />
     <Image Include="Resources\alpha9.png" />
+    <Image Include="Resources\bullet1.PNG" />
     <Image Include="Resources\L.png" />
     <Image Include="Resources\L2.png" />
   </ItemGroup>
