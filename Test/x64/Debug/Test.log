@@ -1,0 +1,3 @@
+﻿  main.cpp
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(114,27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Test.vcxproj -> C:\Users\Davi\source\Project_PFA\x64\Debug\Test.exe
