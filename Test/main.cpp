@@ -675,13 +675,13 @@ public:
 					// cout << "collision result is: " << Collision(player) << endl;
 					if (enemyArray[i]->CircleCollidor(player)) {
 						// If a collision is detected, delete this specific enemy
-						cout << "enemy" << i << "is collision with player" << endl;
+						//cout << "enemy" << i << "is collision with player" << endl;
 						// CheckDeletedEnemy(canvas, i);
 						CObject* enemyDelete = enemyArray[i];
 						enemyArray[i] = nullptr;
 						delete enemyDelete;
 						kills++;
-						cout << "destroyed " << i << endl;
+						//cout << "destroyed " << i << endl;
 					}
 					
 				}
@@ -743,7 +743,7 @@ class bullet : public CObject {
 	
 	float timeElapsed = 0.f; // time since last bullet
 	float timeThreshold = 2.f; // the time to next bullet generation
-	CObject* targetEnemy = nullptr;
+
 
 	
 public:	
@@ -755,32 +755,40 @@ public:
 	// bullet targeted to enemy
 	void GenerateBullet(GamesEngineeringBase::Window& canvas, CObject& player, Enemy& enemy,float dt) {
 		// the number of bullet targeted to enemy depends on weaponLevel
+	
 		timeElapsed += dt;
-		if (currentNumber < maxBullet) {
+		if (currentNumber < numberBullets) {
+			
 			if (timeElapsed > timeThreshold) {
-				for (unsigned int i=0; i < enemy.currentSize; i++) {
-					// loop from existing enemy to find closest one;
-					if (enemy.enemyArray[i] != nullptr) {
-						
-						if (targetEnemy != nullptr) {
-							// create new bullet start with player's position
-							CObject* newBullet = new CObject(player.GetX(), player.GetY(), "bullet1.png");
-							cout << "Bullet created" << endl;
-							bullets[currentNumber++] = newBullet;
+				CObject* closestEnemy = FindClosestEnemy(player, enemy);
 
-							timeElapsed = 0.f; 
-							timeThreshold = 1 / weaponLevel; // generate bullets more frequent as level increases;
-							timeThreshold = max(0.4f, timeThreshold); // set maximum frequency
-						}
-					}
+
+				// loop from existing enemy to find closest one;
+				if (closestEnemy != nullptr) {
+
+
+					// cout << "4th if running" << endl;
+					// create new bullet start with player's position
+					CObject* newBullet = new CObject(player.GetX(), player.GetY(), "bullet1.png");
+					cout << "Bullet created" << endl;
+					bullets[currentNumber++] = newBullet;
+
+					timeElapsed = 0.f;
+					timeThreshold = 1 / weaponLevel; // generate bullets more frequent as level increases;
+					timeThreshold = max(0.4f, timeThreshold); // set maximum frequency
+					cout << "generate bullet finished" << endl;
+
+
+
 				}
 			}
 		}
 	}
 
 	CObject* FindClosestEnemy(CObject& player, Enemy& enemy) {
-		
-		float smallestDistance = 100.f;
+		CObject* closestEnemy = nullptr;
+
+		float smallestDistance = 300.f;
 		for (unsigned int i = 0; i < enemy.currentSize; i++) {
 			if (enemy.enemyArray[i] != nullptr) {
 				// calculate distance
@@ -789,12 +797,12 @@ public:
 				float distance = sqrtf(dx * dx + dy * dy);
 				if (distance < smallestDistance) {
 					smallestDistance = distance;
-					targetEnemy = enemy.enemyArray[i];
+					closestEnemy = enemy.enemyArray[i];
 				}
 			}
 
 		}
-		return targetEnemy;
+		return closestEnemy;
 
 	}
 	//void BulletDelete(GamesEngineeringBase::Window& canvas, unsigned int i,bool collision) {
@@ -807,27 +815,56 @@ public:
 	//	}
 	//}
 
-	bool Collision(Enemy& enemy, CObject& player) {
-		for (unsigned int i = 0; i < enemy.currentSize; i++) {
-			if (enemy.enemyArray[i] != nullptr && enemy.enemyArray[i]->CircleCollidor(player)) {
-				cout << "crash: " << i << endl;
-				return true;
-			}
-		}
-		return false;
-	}
+	//bool Collision(Enemy& enemy, CObject& player) {
+	//	for (unsigned int i = 0; i < enemy.currentSize; i++) {
+	//		if (enemy.enemyArray[i] != nullptr && enemy.enemyArray[i]->CircleCollidor(player)) {
+	//			cout << "crash: " << i << endl;
+	//			return true;
+	//		}
+	//	}
+	//	return false;
+	//}
 
-	void Update(GamesEngineeringBase::Window& canvas,Enemy& enemy, CObject& player, float dt) {
+	//void Update(GamesEngineeringBase::Window& canvas,Enemy& enemy, CObject& player, float dt) {
+	//	GenerateBullet(canvas, player, enemy, dt);
+
+	//	for (unsigned int i = 0; i < currentNumber; i++) {
+	//		cout << " for" << endl;
+	//		if (bullets[i] != nullptr) {
+	//			cout << " run after bullets[]!" << endl;
+	//			GenerateBullet(canvas, player, enemy, dt);
+	//			if (closestEnemy != nullptr) {
+	//				// Move bullet towards closest enemy
+	//				float dx = closestEnemy->GetX() - bullets[i]->GetX();
+	//				float dy = closestEnemy->GetY() - bullets[i]->GetY();
+	//				float distance = sqrtf(dx * dx + dy * dy);
+	//				if (distance > 0.0f) {
+	//					float speed = 200.0f * dt; // Set a bullet speed
+	//					int moveX = static_cast<int>((dx / distance) * speed);
+	//					int moveY = static_cast<int>((dy / distance) * speed);
+	//					bullets[i]->Update(moveX, moveY);
+	//				}
+	//			}
+	//		}
+	//	}
+
+	//}
+
+	void Update(GamesEngineeringBase::Window& canvas, Enemy& enemy, CObject& player, float dt) {
+		GenerateBullet(canvas, player, enemy, dt);
+
 		for (unsigned int i = 0; i < currentNumber; i++) {
 			if (bullets[i] != nullptr) {
-				GenerateBullet(canvas, player, enemy, dt);
-				if (targetEnemy != nullptr) {
-					// Move bullet towards closest enemy
-					float dx = targetEnemy->GetX() - bullets[i]->GetX();
-					float dy = targetEnemy->GetY() - bullets[i]->GetY();
+				// Find the closest enemy for each bullet movement update
+				CObject* closestEnemy = FindClosestEnemy(player, enemy);
+
+				if (closestEnemy != nullptr) {
+					float dx = closestEnemy->GetX() - bullets[i]->GetX();
+					float dy = closestEnemy->GetY() - bullets[i]->GetY();
 					float distance = sqrtf(dx * dx + dy * dy);
+
 					if (distance > 0.0f) {
-						float speed = 200.0f * dt; // Set a bullet speed
+						float speed = 200.0f * dt;
 						int moveX = static_cast<int>((dx / distance) * speed);
 						int moveY = static_cast<int>((dy / distance) * speed);
 						bullets[i]->Update(moveX, moveY);
@@ -835,17 +872,18 @@ public:
 				}
 			}
 		}
-
 	}
 
-	void BulletDelete(unsigned int i) {
-		if (bullets[i] != nullptr) {
-			delete bullets[i];
-			bullets[i] = nullptr;
-			currentNumber--;
-			cout << "Bullet deleted" << endl;
-		}
-	}
+
+
+	//void BulletDelete(unsigned int i) {
+	//	if (bullets[i] != nullptr) {
+	//		delete bullets[i];
+	//		bullets[i] = nullptr;
+	//		currentNumber--;
+	//		cout << "Bullet deleted" << endl;
+	//	}
+	//}
 
 };
 
@@ -929,14 +967,14 @@ int main() {
 			enemy.Update(canvas, player, dt);
 			// enemy.Collision(player);
 			player.Draw(canvas);
-
+			enemy.Draw(canvas);
 			shoot.Update(canvas, enemy, player, dt);
 			shoot.Draw(canvas);
 			 // w.collision(canvas, player, x, y);
 			//w.CheckCollidor(player, x, y);
 			// Display
 
-			enemy.Draw(canvas);
+			
 		
 			//player.draw(canvas);
 

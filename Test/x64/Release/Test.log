@@ -9,14 +9,13 @@ C:\Users\Davi\source\Project_PFA\Test\main.cpp(624,7): warning C4018: '>': signe
 C:\Users\Davi\source\Project_PFA\Test\main.cpp(626,7): warning C4018: '>': signed/unsigned mismatch
 C:\Users\Davi\source\Project_PFA\Test\main.cpp(666,14): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
 C:\Users\Davi\source\Project_PFA\Test\main.cpp(667,14): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(759,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(787,14): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(788,14): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(826,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(827,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(795,14): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(796,14): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(862,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(863,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
   Generating code
-  5 of 411 functions ( 1.2%) were compiled, the rest were copied from previous compilation.
-    1 functions were new in current compilation
-    11 functions had inline decision re-evaluated but remain unchanged
+  7 of 412 functions ( 1.7%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    8 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Test.vcxproj -> C:\Users\Davi\source\Project_PFA\x64\Release\Test.exe
