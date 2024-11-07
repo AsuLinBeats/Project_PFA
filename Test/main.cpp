@@ -239,7 +239,7 @@ class world {
 	tileSet tiles;
 	tileSet alphas;
 	// unsigned int* map;
-	unsigned int size;
+	unsigned int size = 80;
 	unsigned int* map1;
 	unsigned finiteMap[200][40];
 public: unsigned int map[maxSizeX][maxSizeY];
@@ -333,11 +333,11 @@ public:
 				readingNumber = true;
 				cout << num << endl;
 			}
-			else if (ch == ',' || ch == '\n') {
+		 if (ch == ',' || ch == '\n') {
 				// If we encounter a comma or newline, we complete the current number
 				if (readingNumber) {
 					if (i < 200 && j < 200) {
-						map[i][j] = num;
+						map[j][i] = num;
 
 						j++;
 						if (j >= 200) { // Move to the next row if column limit is reached
@@ -414,6 +414,21 @@ public:
 		}
 	}
 
+	bool BoxCollidor(CObject& player, int wx, int wy) {
+		// Check collision between this and other objects
+		int closestX = max(wx, min(player.GetX(), wx + 32));
+		int closestY = max(wy, min(player.GetY(), wy + 32));
+
+		int distanceX = player.GetX() - closestX;
+		int distanceY = player.GetY() - closestY;
+
+		int distanceSquared = (distanceX * distanceX) + (distanceY * distanceY);
+		if (player.CircleCollidor(player) * player.CircleCollidor(player)) {
+			cout << "collision detected" << endl;
+			return true;
+		}
+		
+	}
 
 	//bool collision(GamesEngineeringBase::Window& canvas, CObject& player, unsigned worldX, unsigned worldY) {
 	//	bool l1 = testline(canvas, player.GetX(), player.GetWidth(), worldX, worldY, player.GetHeight());
@@ -455,43 +470,42 @@ public:
 //	}
 //}
 
+	//! check collision when running, if rgb <... then apply collision.
+		
+	//bool testline(GamesEngineeringBase::Window& canvas, unsigned int playerX, unsigned int playerY, unsigned int playerWidth, unsigned playerHeight, unsigned int worldX, unsigned int worldY,unsigned int offset) {
+	//bool testline(GamesEngineeringBase::Window& canvas, unsigned int linex, unsigned int length, unsigned int worldX, unsigned int worldY, unsigned int offset) {
+	//	
+	//	bool col = false;
+	//	// find the tiles
+	//	int Y = (worldY + offset) / 32;
+	//	int X = (worldX + offset) / 32;
+	//	
+	//		cout << "size not = 0" << endl;
+	//		tile& t = tiles[map[X % 32][Y % 32]]; // locate tiles
 
-//private:
-//	//bool testline(GamesEngineeringBase::Window& canvas, unsigned int playerX, unsigned int playerY, unsigned int playerWidth, unsigned playerHeight, unsigned int worldX, unsigned int worldY,unsigned int offset) {
-//	bool testline(GamesEngineeringBase::Window& canvas, unsigned int linex, unsigned int length, unsigned int worldX, unsigned int worldY, unsigned int offset) {
-//		cout << " test line running" << endl;
-//		bool col = false;
-//		// find the tiles
-//		int Y = (worldY + offset) / 32;
-//		int X = (worldX + offset) / 32;
-//		
-//			cout << "size not = 0" << endl;
-//			tile& t = alphas[map[X % size][Y % size]]; // locate tiles
-//
-//			unsigned int y = t.GetHeight() - ((offset + worldY) % 32); // calculate y position within the tile
-//			//unsigned int x = t.GetWidth() - ((offset + worldX) % 32); // calculate x position within the tile
-//
-//			// start from left, to whole line
-//			for (unsigned int i = linex; i < linex + length && i < canvas.getWidth(); i++) {
-//				// draw bounding line 
-//				cout << "for loop is running" << endl;
-//				if (i > canvas.getWidth()) continue;
-//				std::cout << "Checking at(i, y, 0) with i = " << i << ", y = " << y << ", width = " << canvas.getWidth() << ", height = " << canvas.getHeight() << std::endl;
-//				if (t.GetSprite().at(i, y, 0) < 100) {
-//					canvas.draw(i, canvas.getHeight() - offset, 255, 0, 0); // draw line around plane
-//					col = true;
-//				}
-//				else {
-//					canvas.draw(i, canvas.getHeight() - offset, 0, 255, 0);
-//				}
-//
-//
-//			}
-//			return col;
-//
-//
-//	};
-//};
+	//		unsigned int y = t.GetHeight() - ((offset + worldY) % 32); // calculate y position within the tile
+	//		unsigned int x = t.GetWidth() - ((offset + worldX) % 32); // calculate y position within the tile
+	//		//unsigned int x = t.GetWidth() - ((offset + worldX) % 32); // calculate x position within the tile
+
+	//		// start from left, to whole line
+	//		for (unsigned int i = linex; i < linex + length && i < canvas.getWidth(); i++) {
+	//			// draw bounding line 
+	//			cout << "for loop is running" << endl;
+	//			if (i > canvas.getWidth()) continue;
+	//			std::cout << "Checking at(i, y, 0) with i = " << i << ", y = " << y << ", width = " << canvas.getWidth() << ", height = " << canvas.getHeight() << std::endl;
+	//			if (t.GetSprite().at(i, y, 0) < 50) {
+	//				canvas.draw(i, canvas.getHeight() - offset, 255, 0, 0); // draw line around plane
+	//				col = true;
+	//			}
+	//			else {
+	//				canvas.draw(i, canvas.getHeight() - offset, 0, 255, 0);
+	//			}
+	//		}
+	//		return col;
+	//	
+
+	//};
+};
 
 
 //
@@ -530,7 +544,7 @@ public:
 //};
 //};
 
-};
+//};
 const unsigned int maxSize1 = 1000;
 
 class Enemy { //: public CObject {
@@ -964,18 +978,28 @@ int main() {
 				w.draw(canvas, x, y);
 			}
 		// cout << "player x" << player.GetX() << endl;
-			enemy.Update(canvas, player, dt);
+			//enemy.Update(canvas, player, dt);
 			// enemy.Collision(player);
 			player.Draw(canvas);
-			enemy.Draw(canvas);
-			shoot.Update(canvas, enemy, player, dt);
-			shoot.Draw(canvas);
+
+			for (unsigned i = 0; i < canvas.getWidth() / 32; i++) {
+				for (unsigned j = 0; j < canvas.getHeight() / 32; j++) {
+					
+					if (w.map[i][j].getSprite().at(i,j,0) < 50{
+						w.boxCollidor();
+				}
+			}
+
+			//enemy.Draw(canvas);
+			//shoot.Update(canvas, enemy, player, dt);
+			//shoot.Draw(canvas);
 			 // w.collision(canvas, player, x, y);
 			//w.CheckCollidor(player, x, y);
 			// Display
 
+			// w.collision(canvas, player, x, y);
 			
-		
+			// w.collisiton(canvas, player);
 			//player.draw(canvas);
 
 			// Frame display
