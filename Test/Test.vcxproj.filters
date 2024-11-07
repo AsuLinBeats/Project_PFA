@@ -178,6 +178,12 @@
     <Image Include="Resources\bullet1.PNG">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resources\L3.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\L4.PNG">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\projectile1.svg">

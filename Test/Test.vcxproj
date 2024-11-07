@@ -184,6 +184,8 @@
     <Image Include="Resources\bullet1.PNG" />
     <Image Include="Resources\L.png" />
     <Image Include="Resources\L2.png" />
+    <Image Include="Resources\L3.PNG" />
+    <Image Include="Resources\L4.PNG" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\projectile1.svg" />

@@ -1,50 +1,27 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\u2100583\\source\\Project_PFA\\",
+  "WorkspaceRootPath": "C:\\Users\\Davi\\source\\Project_PFA\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D0CE7240-998A-4743-A0D5-37C86E16E335}|Test\\Test.vcxproj|C:\\Users\\u2100583\\source\\Project_PFA\\Test\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D0CE7240-998A-4743-A0D5-37C86E16E335}|Test\\Test.vcxproj|solutionrelative:Test\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:2:0:{D0CE7240-998A-4743-A0D5-37C86E16E335}|Test\\Test.vcxproj|C:\\Users\\Davi\\source\\Project_PFA\\Test\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:2:0:{D0CE7240-998A-4743-A0D5-37C86E16E335}|Test\\Test.vcxproj|solutionrelative:Test\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D0CE7240-998A-4743-A0D5-37C86E16E335}|Test\\Test.vcxproj|C:\\Users\\u2100583\\source\\Project_PFA\\Test\\GamesEngineeringBase.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{D0CE7240-998A-4743-A0D5-37C86E16E335}|Test\\Test.vcxproj|solutionrelative:Test\\GamesEngineeringBase.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:1:0:{D0CE7240-998A-4743-A0D5-37C86E16E335}|Test\\Test.vcxproj|C:\\Users\\Davi\\source\\Project_PFA\\Test\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:1:0:{D0CE7240-998A-4743-A0D5-37C86E16E335}|Test\\Test.vcxproj|solutionrelative:Test\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\u2100583\\Downloads\\planes (3).cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\u2100583\\Downloads\\river (5).cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F7FCC00E-116E-4018-9826-7E06380E510C}|Proj_draft1\\Proj_draft1.vcxproj|C:\\Users\\u2100583\\source\\Project_PFA\\Proj_draft1\\Resources\\0.png||{58961B49-13E0-48C0-9258-13CBC4D40279}",
-      "RelativeMoniker": "D:0:0:{F7FCC00E-116E-4018-9826-7E06380E510C}|Proj_draft1\\Proj_draft1.vcxproj|solutionrelative:Proj_draft1\\Resources\\0.png||{58961B49-13E0-48C0-9258-13CBC4D40279}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F7FCC00E-116E-4018-9826-7E06380E510C}|Proj_draft1\\Proj_draft1.vcxproj|C:\\Users\\u2100583\\source\\Project_PFA\\Proj_draft1\\Resources\\12.png||{58961B49-13E0-48C0-9258-13CBC4D40279}",
-      "RelativeMoniker": "D:0:0:{F7FCC00E-116E-4018-9826-7E06380E510C}|Proj_draft1\\Proj_draft1.vcxproj|solutionrelative:Proj_draft1\\Resources\\12.png||{58961B49-13E0-48C0-9258-13CBC4D40279}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F7FCC00E-116E-4018-9826-7E06380E510C}|Proj_draft1\\Proj_draft1.vcxproj|C:\\Users\\u2100583\\source\\Project_PFA\\Proj_draft1\\Resources\\20.png||{58961B49-13E0-48C0-9258-13CBC4D40279}",
-      "RelativeMoniker": "D:0:0:{F7FCC00E-116E-4018-9826-7E06380E510C}|Proj_draft1\\Proj_draft1.vcxproj|solutionrelative:Proj_draft1\\Resources\\20.png||{58961B49-13E0-48C0-9258-13CBC4D40279}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F7FCC00E-116E-4018-9826-7E06380E510C}|Proj_draft1\\Proj_draft1.vcxproj|C:\\Users\\u2100583\\source\\Project_PFA\\Proj_draft1\\GamesEngineeringBase.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F7FCC00E-116E-4018-9826-7E06380E510C}|Proj_draft1\\Proj_draft1.vcxproj|solutionrelative:Proj_draft1\\GamesEngineeringBase.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D0CE7240-998A-4743-A0D5-37C86E16E335}|Test\\Test.vcxproj|C:\\Users\\u2100583\\source\\Project_PFA\\Test\\Resources\\0.png||{58961B49-13E0-48C0-9258-13CBC4D40279}",
-      "RelativeMoniker": "D:0:0:{D0CE7240-998A-4743-A0D5-37C86E16E335}|Test\\Test.vcxproj|solutionrelative:Test\\Resources\\0.png||{58961B49-13E0-48C0-9258-13CBC4D40279}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\u2100583\\source\\Project_PFA\\Test\\Source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Test\\Source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Davi\\Downloads\\simpleRPG.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Davi\\Downloads\\planes.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Davi\\Downloads\\river (2).cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D0CE7240-998A-4743-A0D5-37C86E16E335}|Test\\Test.vcxproj|C:\\Users\\Davi\\source\\Project_PFA\\Test\\Resources\\0.png||{58961B49-13E0-48C0-9258-13CBC4D40279}",
+      "RelativeMoniker": "D:0:0:{D0CE7240-998A-4743-A0D5-37C86E16E335}|Test\\Test.vcxproj|solutionrelative:Test\\Resources\\0.png||{58961B49-13E0-48C0-9258-13CBC4D40279}"
     }
   ],
   "DocumentGroupContainers": [
@@ -53,8 +30,8 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 441,
-          "SelectedChildIndex": 3,
+          "DockedWidth": 266,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -62,158 +39,85 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "0.png",
-              "DocumentMoniker": "C:\\Users\\u2100583\\source\\Project_PFA\\Proj_draft1\\Resources\\0.png",
-              "RelativeDocumentMoniker": "Proj_draft1\\Resources\\0.png",
-              "ToolTip": "C:\\Users\\u2100583\\source\\Project_PFA\\Proj_draft1\\Resources\\0.png",
-              "RelativeToolTip": "Proj_draft1\\Resources\\0.png",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
-              "WhenOpened": "2024-11-07T12:31:49.917Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "planes (3).cpp",
-              "DocumentMoniker": "C:\\Users\\u2100583\\Downloads\\planes (3).cpp",
-              "RelativeDocumentMoniker": "..\\..\\Downloads\\planes (3).cpp",
-              "ToolTip": "C:\\Users\\u2100583\\Downloads\\planes (3).cpp",
-              "RelativeToolTip": "..\\..\\Downloads\\planes (3).cpp",
-              "ViewState": "AgIAAKcAAAAAAAAAAAAAAMIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-11-07T11:57:20.219Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "main.cpp",
-              "DocumentMoniker": "C:\\Users\\u2100583\\source\\Project_PFA\\Test\\main.cpp",
+              "DocumentMoniker": "C:\\Users\\Davi\\source\\Project_PFA\\Test\\main.cpp",
               "RelativeDocumentMoniker": "Test\\main.cpp",
-              "ToolTip": "C:\\Users\\u2100583\\source\\Project_PFA\\Test\\main.cpp*",
-              "RelativeToolTip": "Test\\main.cpp*",
-              "ViewState": "AgIAANYDAAAAAAAAAAAAAOcDAAAZAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Davi\\source\\Project_PFA\\Test\\main.cpp",
+              "RelativeToolTip": "Test\\main.cpp",
+              "ViewState": "AgIAACwAAAAAAAAAAAAAAD4AAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-11-07T18:10:17.419Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 190,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\Davi\\source\\Project_PFA\\Test\\main.cpp",
+              "RelativeDocumentMoniker": "Test\\main.cpp",
+              "ToolTip": "C:\\Users\\Davi\\source\\Project_PFA\\Test\\main.cpp",
+              "RelativeToolTip": "Test\\main.cpp",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAL0AAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-11-01T21:30:16.987Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "GamesEngineeringBase.h",
-              "DocumentMoniker": "C:\\Users\\u2100583\\source\\Project_PFA\\Proj_draft1\\GamesEngineeringBase.h",
-              "RelativeDocumentMoniker": "Proj_draft1\\GamesEngineeringBase.h",
-              "ToolTip": "C:\\Users\\u2100583\\source\\Project_PFA\\Proj_draft1\\GamesEngineeringBase.h",
-              "RelativeToolTip": "Proj_draft1\\GamesEngineeringBase.h",
-              "ViewState": "AgIAAF0AAAAAAAAAAAAAAEwAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-11-07T11:56:39.632Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Source.cpp",
-              "DocumentMoniker": "C:\\Users\\u2100583\\source\\Project_PFA\\Test\\Source.cpp",
-              "RelativeDocumentMoniker": "Test\\Source.cpp",
-              "ToolTip": "C:\\Users\\u2100583\\source\\Project_PFA\\Test\\Source.cpp",
-              "RelativeToolTip": "Test\\Source.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-11-06T14:14:39.703Z"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 456,
-          "SelectedChildIndex": 2,
-          "Children": [
-            {
-              "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "12.png",
-              "DocumentMoniker": "C:\\Users\\u2100583\\source\\Project_PFA\\Proj_draft1\\Resources\\12.png",
-              "RelativeDocumentMoniker": "Proj_draft1\\Resources\\12.png",
-              "ToolTip": "C:\\Users\\u2100583\\source\\Project_PFA\\Proj_draft1\\Resources\\12.png",
-              "RelativeToolTip": "Proj_draft1\\Resources\\12.png",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
-              "WhenOpened": "2024-11-07T12:35:12.055Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "20.png",
-              "DocumentMoniker": "C:\\Users\\u2100583\\source\\Project_PFA\\Proj_draft1\\Resources\\20.png",
-              "RelativeDocumentMoniker": "Proj_draft1\\Resources\\20.png",
-              "ToolTip": "C:\\Users\\u2100583\\source\\Project_PFA\\Proj_draft1\\Resources\\20.png",
-              "RelativeToolTip": "Proj_draft1\\Resources\\20.png",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
-              "WhenOpened": "2024-11-07T12:33:14.895Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "river (5).cpp",
-              "DocumentMoniker": "C:\\Users\\u2100583\\Downloads\\river (5).cpp",
-              "RelativeDocumentMoniker": "..\\..\\Downloads\\river (5).cpp",
-              "ToolTip": "C:\\Users\\u2100583\\Downloads\\river (5).cpp",
-              "RelativeToolTip": "..\\..\\Downloads\\river (5).cpp",
-              "ViewState": "AgIAAJMAAAAAAAAAAAAAAKkAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-11-07T12:27:29.765Z",
-              "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedWidth": 15,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "GamesEngineeringBase.h",
-              "DocumentMoniker": "C:\\Users\\u2100583\\source\\Project_PFA\\Test\\GamesEngineeringBase.h",
-              "RelativeDocumentMoniker": "Test\\GamesEngineeringBase.h",
-              "ToolTip": "C:\\Users\\u2100583\\source\\Project_PFA\\Test\\GamesEngineeringBase.h",
-              "RelativeToolTip": "Test\\GamesEngineeringBase.h",
-              "ViewState": "AgIAAIsDAAAAAAAAANCewP4DAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-11-05T11:58:41.168Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
               "Title": "0.png",
-              "DocumentMoniker": "C:\\Users\\u2100583\\source\\Project_PFA\\Test\\Resources\\0.png",
+              "DocumentMoniker": "C:\\Users\\Davi\\source\\Project_PFA\\Test\\Resources\\0.png",
               "RelativeDocumentMoniker": "Test\\Resources\\0.png",
-              "ToolTip": "C:\\Users\\u2100583\\source\\Project_PFA\\Test\\Resources\\0.png",
+              "ToolTip": "C:\\Users\\Davi\\source\\Project_PFA\\Test\\Resources\\0.png",
               "RelativeToolTip": "Test\\Resources\\0.png",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
               "WhenOpened": "2024-11-07T11:55:46.998Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "river (2).cpp",
-              "DocumentMoniker": "C:\\Users\\Davi\\Downloads\\river (2).cpp",
-              "RelativeDocumentMoniker": "..\\..\\..\\Davi\\Downloads\\river (2).cpp",
-              "ToolTip": "C:\\Users\\Davi\\Downloads\\river (2).cpp",
-              "RelativeToolTip": "..\\..\\..\\Davi\\Downloads\\river (2).cpp",
-              "ViewState": "AgIAAJYAAAAAAAAAAAAAAIkAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "planes.cpp",
+              "DocumentMoniker": "C:\\Users\\Davi\\Downloads\\planes.cpp",
+              "RelativeDocumentMoniker": "..\\..\\Downloads\\planes.cpp",
+              "ToolTip": "C:\\Users\\Davi\\Downloads\\planes.cpp",
+              "RelativeToolTip": "..\\..\\Downloads\\planes.cpp",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAAADMBAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-11-05T21:56:21.927Z"
+              "WhenOpened": "2024-11-06T21:05:35.876Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "planes.cpp",
-              "DocumentMoniker": "C:\\Users\\Davi\\Downloads\\planes.cpp",
-              "RelativeDocumentMoniker": "..\\..\\..\\Davi\\Downloads\\planes.cpp",
-              "ToolTip": "C:\\Users\\Davi\\Downloads\\planes.cpp",
-              "RelativeToolTip": "..\\..\\..\\Davi\\Downloads\\planes.cpp",
-              "ViewState": "AgIAAF0AAAAAAAAAAAAAAGoAAAAdAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "simpleRPG.cpp",
+              "DocumentMoniker": "C:\\Users\\Davi\\Downloads\\simpleRPG.cpp",
+              "RelativeDocumentMoniker": "..\\..\\Downloads\\simpleRPG.cpp",
+              "ToolTip": "C:\\Users\\Davi\\Downloads\\simpleRPG.cpp",
+              "RelativeToolTip": "..\\..\\Downloads\\simpleRPG.cpp",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAAgAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-11-06T21:05:35.876Z"
+              "WhenOpened": "2024-11-07T21:39:50.016Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "river (2).cpp",
+              "DocumentMoniker": "C:\\Users\\Davi\\Downloads\\river (2).cpp",
+              "RelativeDocumentMoniker": "..\\..\\Downloads\\river (2).cpp",
+              "ToolTip": "C:\\Users\\Davi\\Downloads\\river (2).cpp",
+              "RelativeToolTip": "..\\..\\Downloads\\river (2).cpp",
+              "ViewState": "AgIAAJYAAAAAAAAAAAAAAIkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-11-05T21:56:21.927Z",
+              "EditorCaption": ""
             }
           ]
         }
