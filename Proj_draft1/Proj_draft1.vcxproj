@@ -130,9 +130,6 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GamesEngineeringBase.h" />
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="L.png" />
     <Image Include="L2.png" />
     <Image Include="Resources\0.png" />
@@ -164,6 +161,9 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Resources\tiles.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GamesEngineeringBase.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

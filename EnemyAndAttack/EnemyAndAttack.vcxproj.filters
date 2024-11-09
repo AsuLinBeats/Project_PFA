@@ -9,9 +9,91 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GamesEngineeringBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\background.png">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="Resources\egg0.png">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="Resources\egg1.png">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="Resources\egg2.png">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="Resources\exit0.png">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="Resources\exit1.png">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="Resources\exit2.png">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="Resources\menu0.png">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="Resources\menu1.png">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="Resources\menu2.png">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="Resources\mode0.png">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="Resources\mode1.png">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="Resources\mode2.png">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="Resources\slime0.png">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="Resources\slime1.png">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="Resources\slime2.png">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="Resources\slime3.png">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="Resources\slime4.png">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="Resources\slime5.png">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="Resources\title0.png">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="Resources\title1.png">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="Resources\title2.png">
+      <Filter>Source Files</Filter>
+    </Image>
+    <Image Include="Resources\dead.png">
+      <Filter>Source Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Resources\bgm.wav">
+      <Filter>Source Files</Filter>
+    </Media>
   </ItemGroup>
 </Project>

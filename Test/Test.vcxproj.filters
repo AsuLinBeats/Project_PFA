@@ -20,11 +20,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GamesEngineeringBase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="Resources\0.png">
       <Filter>Resource Files</Filter>
     </Image>
@@ -184,6 +179,30 @@
     <Image Include="Resources\L4.PNG">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resources\slime0.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\slime1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\slime2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\slime3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\slime4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\slime5.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\slimeGreen.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\slimeRed.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\projectile1.svg">
@@ -197,5 +216,10 @@
     <Text Include="Resources\tiles.txt">
       <Filter>Resource Files</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GamesEngineeringBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -3,27 +3,7 @@
 #include"GamesEngineeringBase.h"
 using namespace std;
 
-//int* StringToArray(string s, int * array) {
-//	int index = 0;
-//	int currentNumber = 0;
-//	bool isNumber = false;
-//
-//	for (unsigned int i = 0; s[i] != '\0'; i++) {
-//		if (s[i] >= '0' && s[i] <= '9') {
-//			// Transfer string to number
-//			currentNumber = currentNumber * 10 + (s[i] - '0');
-//			isNumber = true;
-//		}
-//		else if (s[i] == ',' && isNumber) {
-//			// case when meeting ,
-//			array[index++] = currentNumber;
-//			currentNumber = 0;
-//			isNumber = false;
-//		}
-//
-//	}
-//
-//}
+int score = 0;
 
 void drawCircle(GamesEngineeringBase::Window& canvas, int cx, int cy, int r) {
 	int r2 = r * r;
@@ -40,44 +20,30 @@ void drawCircle(GamesEngineeringBase::Window& canvas, int cx, int cy, int r) {
 	}
 }
 
-//void drawBox(GamesEngineeringBase::Window& canvas, int cx, int cy, int r) {
-//	int r2 = r * r;
-//	for (int x = -r; x < r + 1; x++) {
-//		int y = sqrtf(r2 - (x * x));
-//
-//		if (cx + x > 0 && cx + x < canvas.getWidth()) {
-//			if (cy + y > 0 && cy + y < canvas.getHeight())
-//				canvas.draw(cx + x, cy + y, 255, 0, 0);
-//			if (cy - y > 0 && cy - y < canvas.getHeight())
-//				canvas.draw(cx + x, cy - y, 255, 0, 0);
-//		}
-//		//cout << cx + x << '\t' << cy + y << endl;
-//	}
-//}
 void DrawHealthBar(GamesEngineeringBase::Window& canvas, int x, int y, int currentHealth, int maxHealth, int barWidth, int barHeight) {
 	// draw health bar based on percentage at canvas at specific location
 	// calculate percentage
 	if (maxHealth > 0) {
 		float percentage = static_cast<float>(currentHealth) / maxHealth;
-		cout << "percentage is " << percentage << endl;
-		cout << "currentHealth is " << currentHealth << endl;
-		cout << "maxHealth is " << maxHealth << endl;
+
 		bool runOnce = false;
 
 
 		if (!runOnce) {
 			for (unsigned int i = 0; i < barWidth; i++) {
 				for (unsigned int j = 0; j < barHeight; j++) {
-					canvas.draw(x + i, y + j, 255, 255, 255); // draw background
+					if(x+i < canvas.getWidth() && y+j < canvas.getHeight())
+						canvas.draw(x + i, y + j, 255, 255, 255); // draw background
+						runOnce = true;
 				}
 			}
-			runOnce = true;
+			
 		}
-
 
 		for (unsigned int i = 0; i < static_cast<int> (barWidth * percentage); i++) {
 			for (unsigned int j = 0; j < barHeight; j++) {
-				canvas.draw(x + i, y + j, 255, 0, 0); // draw real time blood
+				if (x + i < canvas.getWidth() && y + j < canvas.getHeight())
+					canvas.draw(x + i, y + j, 255, 0, 0); // draw real time blood
 			}
 		}
 
@@ -88,9 +54,9 @@ void DrawHealthBar(GamesEngineeringBase::Window& canvas, int x, int y, int curre
 
 class CObject
 {
-	// 
-protected:
+private:
 
+protected:
 	GamesEngineeringBase::Image sprite;
 public:
 	int attack;
@@ -124,7 +90,25 @@ public:
 		drawCircle(canvas, x + sprite.width / 2, y + sprite.height / 2, sprite.width / 3);
 	}
 
-	void DrawHealth(GamesEngineeringBase::Window& canvas) {
+
+	void Draw(GamesEngineeringBase::Window& canvas,int x, int y) {
+		// Draw objects to screen in its original material
+		for (unsigned int i = 0; i < sprite.width; i++) {
+			if (x + i > 0 && x + i < canvas.getWidth()) {
+				for (unsigned int j = 0; j < sprite.height; j++) {
+					if (y + j > 0 && y + j < canvas.getHeight()) {
+						if (sprite.alphaAt(i, j) > 200)
+							canvas.draw(x + i, y + j, sprite.at(i, j));
+
+					}
+				}
+			}
+		}
+
+		drawCircle(canvas, x + sprite.width / 2, y + sprite.height / 2, sprite.width / 3);
+	}
+
+	virtual void DrawHealth(GamesEngineeringBase::Window& canvas) {
 		DrawHealthBar(canvas, x, y + sprite.height, currentHealth, maxHealth, sprite.width, 3);
 	}
 
@@ -145,60 +129,66 @@ public:
 		if (x + sprite.width > canvas.getWidth()) x = canvas.getWidth() - sprite.width;
 		if (y + sprite.height > canvas.getHeight()) y = canvas.getHeight() - sprite.height;
 
-	}
-	template <typename T>
-	//bool CircleCollidor(T& other) {
-	//	// Calculate the distance between the centers of the two objects
-	//	int dx = x - other.x;
-	//	int dy = y - other.y;
-	//	float distance = sqrtf(dx * dx + dy * dy);
 
-	//	// Calculate the radius of the current object and the other object
-	//	float thisRadius = static_cast<float>(sprite.width / 3.0f); // Adjust this factor to control collision size (try 3.0f or 2.0f)
-	//	float otherRadius = static_cast<float>(other.sprite.width / 2.5f); // Keep this for the enemy radius
+	}	
 
-	//	// Debugging: Output values to check if collision is happening correctly
-	//	cout << "Bullet to Enemy Collision Check:" << endl;
-	//	cout << "Distance: " << distance << ", Bullet Radius: " << thisRadius << ", Enemy Radius: " << otherRadius << endl;
-
-	//	// Compare the distance to the sum of the radii to detect a collision
-	//	if (distance < (thisRadius + otherRadius)) {
-	//		return true; // Collision detected
-	//	}
-	//	else {
-	//		return false; // No collision
-	//	}
-	//}
-	//bool CircleCollidor(T& other) {
-	//	// Calculate the distance between the centers of the two objects
-	//	int dx = x - other.x;
-	//	int dy = y - other.y;
-	//	float distance = sqrtf(dx * dx + dy * dy);
-
-	//	// Calculate the radius of the current object and the other object
-	//	float thisRadius = static_cast<float>(sprite.width / 2.5f); // Adjust for the size of the object
-	//	float otherRadius = static_cast<float>(other.sprite.width / 2.5f); // Adjust for the other object's size
-
-	//	// Compare the distance to the sum of the radii to detect a collision
-	//	if (distance < thisRadius + otherRadius) {
-	//		return true; // Collision detected
-	//	}
-	//	else {
-	//		return false; // No collision
-	//	}
-	//}
-	// 
-	bool CircleCollidor(T& other) {
+	 bool CircleCollidor(CObject& other, int type) {
 		// Check collision between this and other objects
 		int dx = x - other.x;
 		int dy = y - other.y;
 
 		float radius = static_cast<float>(sprite.width / 2.5f);
+		float otherRadius = static_cast<float>(other.sprite.width / 2.5f);
 		// Euclidean distance of two objects
 		float d = sqrtf(dx * dx + dy * dy);
-		if (d < 2.0f * radius) return true;
-		else return false;
+		if (type == 0) {
+			if (d < 2.0f * otherRadius) {
+				return true;
+			}
+			else return false;
+		}
+		if (type == 1) {
+			if (d < 2.0f * radius) {
+				return true;
+			}
+			else return false;
+		}
+
 	}
+
+
+
+	 bool TileCollidor(int tileX, int tileY, int tileWidth, int tileHeight) {
+		 // Get the center point of the player object
+		 int centerX = x + sprite.width / 2;
+		 int centerY = y + sprite.height / 2;
+		 float r = static_cast<float>(sprite.width / 2.5f);
+
+		 // Find the closest point on the tile to the player's center
+		 int closestX = max(tileX, min(centerX, tileX + tileWidth));
+		 int closestY = max(tileY, min(centerY, tileY + tileHeight));
+		 cout << "closestX" << closestX << endl;
+		 cout << "closestY" << closestY << endl;
+		 cout << "r" << r << endl;
+
+		 // Calculate distance from closest point to player's center
+		 int dx = centerX - closestX;
+		 int dy = centerY - closestY;
+
+		 if (sqrt(dx * dx + dy * dy) <= r) {
+			 // // Check if distance is within player's radius (circle collision)
+			 return false;
+		 }
+		 else {
+			 return true;
+		 }
+	 }
+
+	 void NotCross() {
+		 // ban moving at this time, the player can move in the next frame
+		 x = x;
+		 y = y;
+	 }
 
 	int getAttack() {
 		return attack;
@@ -221,6 +211,7 @@ public:
 	bool isAlive() {
 		return currentHealth > 0;
 	}
+
 	int GetX() {
 		return x;
 	}
@@ -237,16 +228,24 @@ public:
 		return sprite.width;
 	}
 
-	//void Animation(int number) {
-	//	// class
-	//	int currentIndex = 0;
-	//	static int counter = 0;
-	//	if (++counter % 5 == 0) {
-	//		currentIndex++;
-	//	}
-	//	currentIndex = currentIndex % number; // make animation loop
-	//}
+	void fight(CObject& other) {
+		if (currentHealth > 0 && other.currentHealth > 0) {
+			other.decreaseHealth(attack);
+			decreaseHealth(other.attack);
+		}
+	}
+
+	void gameOver(bool& running) {
+		bool isalive = isAlive();
+		if (!isalive) {
+			running = false;
+			cout << "game over" << endl;
+			cout << "score is: " << score << endl;
+		}
+	}
+
 };
+
 
 
 
@@ -279,13 +278,27 @@ public:
 		return sprite.width;
 	}
 
-	bool isWater() {
+	bool CircleCollidor(CObject& other, int px, int py) {
+		// Check collision between this and other objects
+		int dx = px - other.x;
+		int dy = py - other.y;
 
-
+		float radius = static_cast<float>(sprite.width / 2.5f);
+		// Euclidean distance of two objects
+		float d = sqrtf(dx * dx + dy * dy);
+		if (d < 2.0f * radius) return true;
+		else return false;
 	}
 
-	GamesEngineeringBase::Image GetSprite() {
+	GamesEngineeringBase::Image& GetSprite() {
 		return sprite;
+	}
+
+	bool isWater(int num) {
+		if (num >= 14 && num <= 22) {
+			return true;
+		}
+
 	}
 };
 
@@ -310,30 +323,6 @@ public:
 };
 
 
-//class BoxCollider {
-//public:
-//	int x, y;
-//	int tilesize;
-//	BoxCollider(int _x, int _y, int _tilesize) {
-//		x = _x;
-//		y = _y;
-//		tilesize = _tilesize;
-//
-//	}
-//	bool isCollision(CObject& player) {
-//		// Assume each box is 32x32
-//		// Check collision between this and other objects
-//
-//		// Euclidean distance of two objects
-//		if (x < player.GetX() + player.GetWidth() && x + tilesize > player.GetX() &&
-//			y < player.GetY() + player.GetHeight() && y + tilesize > player.GetY()) {
-//			cout << "box collision detected" << endl;
-//			return true;
-//		}
-//		else { return false; }
-//	};
-//};
-
 
 const int maxSizeY = 80;
 const int maxSizeX = 80;
@@ -345,8 +334,10 @@ class world {
 	unsigned int size = 80;
 	unsigned int* map1;
 	unsigned finiteMap[200][40];
-public: unsigned int map[maxSizeX][maxSizeY];
-	  bool isWater = false;
+public: 
+	unsigned int map[maxSizeX][maxSizeY];
+	  bool isWater[maxSizeX][maxSizeY];
+
 
 	  // int map1[32][24];
 public:
@@ -364,36 +355,15 @@ public:
 				map[i][j] = rand() % tileNum; // randomly choose a tile and put it into 2D array
 
 				cout << "map[i][j]" << map[i][j] << endl;
-				//if ((map[i][j] >= 14) && (map[i][j] <= 22)) {
-				////	isWater = true;
-				////	cout << "collision applied for this tile: " << map[i][j] << endl;
-				////	int tileX = i * 32;
-				////	int tileY = j * 32;
-
-				////}
-				////else { isWater = false; }
+				if (map[i][j] >= 14 && map[i][j] <= 22) {
+					isWater[i][j] = true;
+				}
+				else {
+					isWater[i][j] = false;
+				}
 			}
 		}
 	}
-	//world(string filename){
-	//	tiles.Load();
-	//	ifstream infile(filename);
-	//	int tilenum, i,j;
-	//	string s;
-
-	//	infile >> tilenum;
-	//	cout << tilenum << endl; 
-	//	// map1 = new unsigned int[tilenum];
-
-	//	for (i = 0; i < tilenum; i++) {
-	//		for (j = 0; j < tilenum; j++) {
-	//			infile >> map[i][j];
-	//			cout << map[i][j] << endl;
-	//		}
-
-	//	}
-	//	infile.close();
-	//	}
 
 	world(std::string filename) {
 		tiles.Load();
@@ -408,22 +378,6 @@ public:
 			cout << "Error opening file: " << filename << std::endl;
 			return;
 		}
-		//while (!infile.eof()) {
-		//	infile >> ch;
-		//	cout << "ch is " << ch << endl;
-		//}
-	//	while (getline(infile, s)) {
-			// access each line
-		//for (unsigned int z = 0; z < tileshigh; z++) {
-		//	cout << "s is " << s << endl;
-		//	for (unsigned int i = 0; i < tileswide; i++) {
-		//		for (unsigned int j = 0; j < tileshigh; j++) {
-		//			cout << s[z] << endl;
-		//			
-		//		}
-		//	}
-		//	//}
-		//}
 
 		int i = 0, j = 0;
 		char ch;
@@ -435,20 +389,19 @@ public:
 				// Accumulate the number character by character
 				num = num * 10 + (ch - '0'); // transfer to int
 				readingNumber = true;
-				cout << num << endl;
+				cout << "number reading is " << num << endl;
 			}
-		 if (ch == ',' || ch == '\n') {
+			if (ch == ',' || ch == '\n') {
 				// If we encounter a comma or newline, we complete the current number
 				if (readingNumber) {
-					if (i < 200 && j < 200) {
+					if (i < maxSizeX && j < maxSizeY) {
 						map[j][i] = num;
-
+						cout << "map[" << i << "][" << j << "] = " << num << endl;
 						j++;
 						if (j >= 200) { // Move to the next row if column limit is reached
 							j = 0;
 							i++;
 						}
-						cout << "map i j is" << map[i][j] << endl;
 					}
 					num = 0;           // Reset num for the next number
 					readingNumber = false; // Reset flag
@@ -462,26 +415,59 @@ public:
 			}
 		}
 	}
+	//world(std::string filename) {
+	//	tiles.Load();
+	//	alphas.Load("alpha");
+	//	int tileswide = 42;
+	//	int tileshigh = 42;
+	//	int tilewidth = 32;
+	//	int tileheight = 32;
 
-	//for (unsigned int i = 0; i < 32; i++) {
-//	for (unsigned int j = 0; j < 24; j++) {
-//		map1[i][j] = rand() % tileNum; // randomly choose a tile and put it into 2D array
-//		// map[i][j] = rand() % tileNum; // randomly choose a tile and put it into 2D array
-//		cout << map1[i][j] << endl;
-//	}
-//}
+	//	std::ifstream infile(filename);
+	//	if (!infile.is_open()) {
+	//		std::cout << "Error opening file: " << filename << std::endl;
+	//		return;
+	//	}
 
-		//for (unsigned int i = 0; i < screenSize; i++) {
-		//	map[i] = rand() % tileNum;
-		//	cout << "map is" << map[i] << endl;
-		//}
+	//	int i = 0, j = 0;
+	//	char ch;
+	//	int num = 0;
+	//	bool readingNumber = false;
 
-	//~world() {
-	//	delete[] map1;
-	//}//int worldX, int worldY
+	//	while (infile.get(ch)) {
+	//		if (ch >= '0' && ch <= '9') {
+	//			// Accumulate the number character by character
+	//			num = num * 10 + (ch - '0');
+	//			readingNumber = true;
+	//		}
 
+	//		if (ch == ',' || ch == '\n') {
+	//			// Complete the current number when we encounter a comma or newline
+	//			if (readingNumber) {
+	//				if (i < tileshigh && j < tileswide) {  // Ensure indices are within bounds
+	//					map[j][i] = num;  // Assign num to the map
+	//					std::cout << "map[" << i << "][" << j << "] = " << num << std::endl; // Debugging output
+	//				}
+	//				num = 0;
+	//				readingNumber = false;
+	//				j++;  // Move to the next column
 
-	void draw(GamesEngineeringBase::Window& canvas, int wx, int wy) {
+	//				if (j >= tileswide) {  // Move to the next row if column limit is reached
+	//					j = 0;
+	//					i++;
+	//				}
+	//			}
+
+	//			if (ch == '\n') {
+	//				j = 0;
+	//				i++;
+	//			}
+	//		}
+	//	}
+
+	//	infile.close();
+	//}
+	void draw(GamesEngineeringBase::Window& canvas, CObject& player,int wx, int wy) {
 		int height = tiles[0].GetHeight(); // should not be limited in specific tile, but considering every tile should be sliced to 32*32 for pixel game, so it is fine 
 		int width = tiles[0].GetWidth();
 
@@ -495,7 +481,14 @@ public:
 		for (unsigned i = 0; i < canvas.getWidth() / width; i++) {
 			for (unsigned j = 0; j < canvas.getHeight() / height; j++) {
 				tiles[map[(X + i) % maxSizeX][(Y + j) % maxSizeY]].Draw(canvas, 32 * i, 32 * j);
+				if (map[i][j] >= 14 && map[i][j] <=22) {
+					// apply circle collider
+					if (tiles[map[(X + i) % maxSizeX][(Y + j) % maxSizeY]].CircleCollidor(player, 32*i, 32*j) ){
+						cout << "collidor deteted" << endl;
+					}
+				}
 			}
+
 		}
 	}
 
@@ -518,153 +511,115 @@ public:
 		}
 	}
 
-	//bool BoxCollidor(CObject& player, int wx, int wy) {
-	//	// Check collision between this and other objects
-	//	int closestX = max(wx, min(player.GetX(), wx + 32));
-	//	int closestY = max(wy, min(player.GetY(), wy + 32));
+	bool isCollision(int num) {
+		if (num >= 14 && num <= 22) {
+			return true;
+		}
 
-	//	int distanceX = player.GetX() - closestX;
-	//	int distanceY = player.GetY() - closestY;
-
-	//	int distanceSquared = (distanceX * distanceX) + (distanceY * distanceY);
-	//	if (player.CircleCollidor(player) * player.CircleCollidor(player)) {
-	//		cout << "collision detected" << endl;
-	//		return true;
-	//	}
-	//	
-	//}
-
-	bool collision(GamesEngineeringBase::Window& canvas, CObject& player, unsigned worldX, unsigned worldY) {
-		bool l1 = testline(canvas, player.GetX(), player.GetWidth(), worldX, worldY, canvas.getHeight()/2);
-		// bool l2 = testline(canvas, player.GetX(), player.GetWidth(), worldX, worldY, canvas.getHeight()/2 + player.GetHeight());
-		//bool l3 = testline1();
-		//bool l4 = testline1();
-		return l1;
 	}
 
-	//bool collision(GamesEngineeringBase::Window& canvas, CObject& player, unsigned worldX, unsigned worldY) {
-	//	 //Use worldX and worldY in place of wx and wy
-	//	bool b1 = testline(canvas, player.GetX(), player.GetY(), player.GetWidth(), player.GetHeight(), worldX, worldY, player.GetHeight() / 3);
-	//	bool b2 = testline(canvas, player.GetX() + 19, player.GetY() + 10, player.GetWidth() - 5, player.GetHeight() - 5, worldX, worldY, (player.GetHeight() / 2) - 1);
-
-	//	 //Use logical AND (&&) for boolean logic
-	//	return b1 && b2;
+	//bool Tilecollider(CObject& player,int x, int y) {
+	//	for (unsigned int i = x; i < x + player.GetWidth(); i++) {
+	//		for (unsigned int j = y; j < y + player.GetHeight(); i++) {
+	//			//cout << "map[i / 32][j / 32]" << map[i / 32][j / 32] << endl;
+	//			cout << "i" << i << endl;
+	//			//cout << "map[i / 32][j / 32]" << map[i / 32][j / 32] << endl;
+	//			if (tiles[map[i / 32][j / 32]].isWater(map[i / 32][j / 32]))// should not be const number.
+	//				
+	//				cout << "collision detected" << endl;
+	//				return true;
+	//		}
+	//	}
+	//	return false;
 	//}
 
-//bool CheckCollidor(CObject& player) {
-//	for (unsigned i = 0; i < 100; i++) {
-//		for (unsigned j = 0; j < 100; j++) {
-//			//cout << "map[i][j] reading" << w.map[i][j] << endl;
+	//bool Tilecollider(CObject& player, int x, int y) {
+	//	int tileWidth = 32;
+	//	int tileHeight = 32;
 
-//			if ((map[i][j] >= 14) && (map[i][j] <= 22)) {
-//				cout << "collision applied for this tile: " << map[i][j] << endl;
-//				int tileX = i * 32;
-//				int tileY = j * 32;
-//				BoxCollider boxcollision(tileX, tileY, 32);
-//				return boxcollision.isCollision(player);
-//				//! here the map[i][j] remains unchanged even we apply true random, needs to find why
+	//	// Get the range of tiles covered by the player's bounding box
+	//	int startX = x / tileWidth;
+	//	int startY = y / tileHeight;
+	//	int endX = (x + player.GetWidth()) / tileWidth;
+	//	int endY = (y + player.GetHeight()) / tileHeight;
 
-//				// return(boxcollision.isCollision(player));
+	//	for (int i = startX; i <= endX; i++) {
+	//		for (int j = startY; j <= endY; j++) {
+	//			int tileIndex = map[j][i];  // Access the tile index in the map
 
-//				// return boxCollidor(player, x, y);
+	//			//cout << "Checking tile at (" << i << ", " << j << ") with index: " << tileIndex << endl;
+	//			//cout << "tileindex is" << tileIndex << endl;
+	//			// Check if the tile at the current position is water or has collision
+	//			if (tiles[tileIndex].isWater(tileIndex)) {
+	//				// cout << "Collision detected with water tile at (" << i << ", " << j << ")" << endl;
+	//				return true;
+	//			}
+	//		}
+	//	}
+	//	return false;
+	//}
+	bool Tilecollider(CObject& player, int x, int y) {
+		int tileWidth = 32;
+		int tileHeight = 32;
 
-//			}
+		// Calculate player's position in terms of tile indices
+		int playerTileX = x / tileWidth;
+		int playerTileY = y / tileHeight;
 
+		// Calculate the bounding box in terms of tile indices
+		int startX = playerTileX;
+		int startY = playerTileY;
+		int endX = (x + player.GetWidth()) / tileWidth;
+		int endY = (y + player.GetHeight()) / tileHeight;
 
-//		}
-//	}
-//}
+		// Loop over the range of tiles occupied by the player
+		for (int i = startX; i <= endX; i++) {
+			for (int j = startY; j <= endY; j++) {
+				// Ensure i and j are within map bounds to prevent out-of-range errors
+				if (i >= 0 && i < 42 && j >= 0 && j < 42) { // assuming map is 42x42
+					int tileIndex = map[j][i];
 
-	//! check collision when running, if rgb <... then apply collision.
-		
-	//bool testline(GamesEngineeringBase::Window& canvas, unsigned int playerX, unsigned int playerY, unsigned int playerWidth, unsigned playerHeight, unsigned int worldX, unsigned int worldY,unsigned int offset) {
-	bool testline(GamesEngineeringBase::Window& canvas, unsigned int linex, unsigned int length, unsigned int worldX, unsigned int worldY, unsigned int offset) {
-		
-		bool col = false;
-		// find the tiles
-		int Y = (worldY + offset) / 32;
-		int X = (worldX + offset) / 32;
-		
-			cout << "size not = 0" << endl;
-			tile& t = alphas[map[X][Y]]; // locate tiles
-			GamesEngineeringBase::Image f = t.GetSprite();
-			unsigned int y1 = 32 - ((offset + worldY) % 32); // calculate y position within the tile
-			unsigned int x1 = 32 - ((offset + worldX) % 32); // calculate y position within the tile
-			//unsigned int x = t.GetWidth() - ((offset + worldX) % 32); // calculate x position within the tile
+					// Calculate the original top-left position of this tile in pixels
+					int tilePosX = i * tileWidth;
+					int tilePosY = j * tileHeight;
 
-			// start from left, to whole line
-			for (unsigned int i = linex; i < linex + length; i++) {
-				// draw bounding line 
-				cout << "for loop is running" << endl;
-				if (i > canvas.getWidth()) continue;
-				std::cout << "Checking at(i, y, 0) with i = " << i << ", y = " << y1 << ", width = " << canvas.getWidth() << ", height = " << canvas.getHeight() << std::endl;
-				if (f.at(i, y1, 0) < 50) {
-					canvas.draw(i, canvas.getHeight() - offset, 255, 0, 0); // draw line around plane
-					col = true;
-				}
-				else {
-					canvas.draw(i, canvas.getHeight() - offset, 0, 255, 0);
+					std::cout << "Tile at (" << i << ", " << j << ") has original position: ("
+						<< tilePosX << ", " << tilePosY << ") with index: " << tileIndex << std::endl;
+
+					// Check for collision using the tile's properties (e.g., if it's water)
+					if (tiles[tileIndex].isWater(tileIndex)) {
+						std::cout << "Collision detected with water tile at (" << i << ", " << j << ")" << std::endl;
+						return true;
+					}
 				}
 			}
-			return col;
-
-	};
+		}
+		return false;
+	}
+	
 };
 
 
-//
-//bool testlinex(GamesEngineeringBase::Window& canvas, unsigned int linex, unsigned int length, unsigned int worldX, unsigned int worldY, unsigned int offset) {
-//	cout << " test line running" << endl;
-//	bool col = false;
-//	// find the tiles
-//	int Y = (worldY + offset) / 32;
-//	int X = (worldX + offset) / 32;
-//
-//	cout << "size not = 0" << endl;
-//	tile& t = tiles[map[X % size][Y % size]]; // locate tiles
-//
-//	unsigned int y = t.GetHeight() - ((offset + worldY) % 32); // calculate y position within the tile
-//	//unsigned int x = t.GetWidth() - ((offset + worldX) % 32); // calculate x position within the tile
-//
-//	// start from left, to whole line
-//	for (unsigned int i = linex; i < linex + length && i < canvas.getWidth(); i++) {
-//		// draw bounding line 
-//		cout << "for loop is running" << endl;
-//		if (i > canvas.getWidth()) continue;
-//		std::cout << "Checking at(i, y, 0) with i = " << i << ", y = " << y << ", width = " << canvas.getWidth() << ", height = " << canvas.getHeight() << std::endl;
-//		if (t.GetSprite().at(i, y, 0) < 100) {
-//			canvas.draw(i, canvas.getHeight() - offset, 255, 0, 0); // draw line around plane
-//			col = true;
-//		}
-//		else {
-//			canvas.draw(i, canvas.getHeight() - offset, 0, 255, 0);
-//		}
-//
-//
-//	}
-//	return col;
-//
-//
-//};
-//};
 
-//};
-class bullet; //forward declaration to make enemy collider only accepts bullet
+
+
+// class bullet; //forward declaration to make enemy collider only accepts bullet
 const unsigned int maxSize1 = 1000;
-
+//
 class Enemy : public CObject { //: public CObject {
-	
-	
 	float timeElapsed = 0.f; // time since last enemy created
 	float timeThreshold = 2.f; // the time to next enemy creation
-	int offset = 200;
 
+	float attackElapsed = 0.f; // time since last attack
+	float attackThreshold = 2.f; // the time to next attack
+
+	int offset = 200;
 	void Random(GamesEngineeringBase::Window& canvas, int _offset) {
 		offset = _offset;
 		int side = rand() % 4;
 		switch (side) {
 		case 0:
-			// Generate enemy from top
+			// Generate enemy from topsssss
 			px = rand() % canvas.getWidth();
 			py = - offset;
 			break;
@@ -686,54 +641,7 @@ class Enemy : public CObject { //: public CObject {
 		}
 	}
 
-
-	//void Random(GamesEngineeringBase::Window& canvas, int _offset) {
-	//	offset = _offset;
-	//	int side = rand() % 4;
-	//	switch (side) {
-	//	case 0:
-	//		// Generate enemy from top
-	//		px = rand() % canvas.getWidth();
-	//		py = y - canvas.getHeight() / 2 - offset;
-	//		break;
-	//	case 1:
-	//		// Generate enemy from bottom
-	//		px = rand() % canvas.getWidth();
-	//		py = canvas.getHeight() + offset;
-	//		break;
-	//	case 2:
-	//		// generate enemy from left
-	//		px = -offset;
-	//		py = rand() % canvas.getHeight();
-	//		break;
-	//	case 3:
-	//		// generate enemy from right
-	//		px = canvas.getWidth() + offset;
-	//		py = rand() % canvas.getHeight();
-	//		break;
-	//	}
-	//}
-
-	void GenerateEnemy(GamesEngineeringBase::Window& canvas, float dt) {
-		Random(canvas, 100);
-		timeElapsed += dt;
-		if (currentSize < maxSize1) {
-			if (timeElapsed > timeThreshold) {
-				CObject* newEnemy = new CObject(px, py, "Resources/L2.png",20,10);
-				cout << "Enemy created: " << currentSize << endl;
-				// Save address of new enemy to array
-				enemyArray[currentSize++] = newEnemy;
-				// reset generation parameter
-				timeElapsed = 0.f;
-				timeThreshold -= 0.02f;
-				// difficulty control
-				timeThreshold = max(0.9f, timeThreshold);
-			}
-		}
-		else {
-			cout << "Last Enemy!!!" << endl;
-		}
-	}
+	
 
 	bool isOutBound(int _px, int _py, GamesEngineeringBase::Window& canvas, int _offset) {
 		// check if object out boundary
@@ -759,25 +667,53 @@ class Enemy : public CObject { //: public CObject {
 
 
 public:
+	
 	int maxHealth = 20;
+	int currentHealth;
+	int attack = 10;
 	GamesEngineeringBase::Image sprite;
-	CObject* enemyArray[1000];
+	CObject* enemyArray[100];
 	unsigned int currentSize = 0;
 	int px = 200;
 	int py = 200;
-	int x=0;
-	int y=0;
+	int x;
+	int y;
+	int award = 10;
 	unsigned int kills = 0;
 	Enemy(int _x, int _y) { 
 		x = _x;
 		y = _y;
-		
+		currentHealth = maxHealth;
 	};
 
+	void GenerateEnemy(GamesEngineeringBase::Window& canvas, float dt, string filename) {
+		Random(canvas, 100);
+		timeElapsed += dt;
+		//x = px;
+		//y = py;
+		if (currentSize < maxSize1) {
+			if (timeElapsed > timeThreshold) {
+				CObject* newEnemy = new CObject(px, py, filename, maxHealth, attack);
+				cout << "Enemy created: " << currentSize << endl;
+				// Save address of new enemy to array
+				enemyArray[currentSize++] = newEnemy;
+				// reset generation parameter
+				timeElapsed = 0.f;
+				timeThreshold -= 0.02f;
+				// difficulty control
+				timeThreshold = max(0.9f, timeThreshold);
+				DrawHealth(canvas);
+			}
+		}
+		else {
+			cout << "Last Enemy!!!" << endl;
+		}
+	}
 
-	void Update(GamesEngineeringBase::Window& canvas, CObject& player,CObject bullet, float dt) {
+	void Update(GamesEngineeringBase::Window& canvas, CObject& player, CObject& bullet, float dt, string filename) {
 
-		GenerateEnemy(canvas, dt);
+		GenerateEnemy(canvas, dt, filename);
+		
 		// cout << "After generate enemy running!" << endl;
 		  // define speed
 		int speed = static_cast<int>((70.0f * dt));
@@ -795,16 +731,25 @@ public:
 					enemyArray[i]->Update(moveX, moveY);
 					
 					// cout << "collision result is: " << Collision(player) << endl;
-					cout << "the result of circlecollidor is" << CircleCollidor(bullet) << endl;
-					if (enemyArray[i]->CircleCollidor(player)|| enemyArray[i]->CircleCollidor(bullet)) {
+					// cout << "the result of circlecollidor is" << CircleCollidor(bullet) << endl;
+					if (enemyArray[i]->currentHealth <= 0) {
+						
+						// if crush, delete immediately
+							CObject* enemyDelete = enemyArray[i];
+							enemyArray[i] = nullptr;
+							delete enemyDelete;
+							kills++;
+							score += award;
+					//	}
 						// If a collision is detected, delete this specific enemy
-						//cout << "enemy" << i << "is collision with player" << endl;
-						// CheckDeletedEnemy(canvas, i);
-						CObject* enemyDelete = enemyArray[i];
-						enemyArray[i] = nullptr;
-						delete enemyDelete;
-						kills++;
+
 						//cout << "destroyed " << i << endl;
+					} else if (enemyArray[i]->CircleCollidor(player, 1)) {
+						attackElapsed += dt;
+						if (attackElapsed > attackThreshold) {
+							player.decreaseHealth(attack);
+							attackElapsed = 0.f;
+						}
 					}
 					
 				}
@@ -824,61 +769,333 @@ public:
 	}
 
 
-
-	//bool CircleCollidor(CObject other) {
-	//	// Check collision between this and other objects
-	//	int dx = x - other.x;
-	//	int dy = y - other.y;
-
-	//	float radius = static_cast<float>(enemyArray[0]->GetWidth() / 2.5f);
-	//	// Euclidean distance of two objects
-	//	float d = sqrtf(dx * dx + dy * dy);
-	//	if (d < 2.0f * radius) return true;
-	//	else return false;
-	//}
+	 void DrawHealth(GamesEngineeringBase::Window& canvas) override {
+		DrawHealthBar(canvas, px, py, currentHealth, maxHealth, 83, 3);
+	 }
 
 
+};
+//class Enemy : public CObject {
+//	float timeElapsed = 0.f;
+//	float timeThreshold = 2.f;
+//
+//	float attackElapsed = 0.f;
+//	float attackThreshold = 2.f;
+//
+//	int offset = 200;
+//
+//	void Random(GamesEngineeringBase::Window& canvas, int _offset) {
+//		offset = _offset;
+//		int side = rand() % 4;
+//		switch (side) {
+//		case 0: // Top
+//			px = rand() % canvas.getWidth();
+//			py = -offset;
+//			break;
+//		case 1: // Bottom
+//			px = rand() % canvas.getWidth();
+//			py = canvas.getHeight() + offset;
+//			break;
+//		case 2: // Left
+//			px = -offset;
+//			py = rand() % canvas.getHeight();
+//			break;
+//		case 3: // Right
+//			px = canvas.getWidth() + offset;
+//			py = rand() % canvas.getHeight();
+//			break;
+//		}
+//	}
+//
+//	bool isOutBound(int _px, int _py, GamesEngineeringBase::Window& canvas, int _offset) {
+//		return (_px < -_offset || _px > canvas.getWidth() + _offset ||
+//			_py < -_offset || _py > canvas.getHeight() + _offset);
+//	}
+//
+//	void DeleteOutBound(GamesEngineeringBase::Window& canvas, unsigned int i) {
+//		if (i >= maxSize1 || enemyArray[i] == nullptr) return;
+//		if (isOutBound(enemyArray[i]->GetX(), enemyArray[i]->GetY(), canvas, 350)) {
+//			CObject* enemyDelete = enemyArray[i];
+//			enemyArray[i] = nullptr;
+//			delete enemyDelete;
+//			kills++;
+//			cout << "Destroyed " << i << endl;
+//		}
+//	}
+//
+//public:
+//	int maxHealth = 20;
+//	int currentHealth;
+//	int attack = 10;
+//	GamesEngineeringBase::Image sprite;
+//	CObject* enemyArray[100];
+//	unsigned int currentSize = 0;
+//	int px = 200;
+//	int py = 200;
+//	int x;
+//	int y;
+//	int award = 10;
+//	unsigned int kills = 0;
+//
+//	Enemy(int _x, int _y) {
+//		x = _x;
+//		y = _y;
+//		currentHealth = maxHealth;
+//	};
+//
+//	void GenerateEnemy(GamesEngineeringBase::Window& canvas, float dt, const std::string& filename) {
+//		Random(canvas, 100);
+//		timeElapsed += dt;
+//		x = px;
+//		y = py;
+//		if (currentSize < maxSize1 && timeElapsed > timeThreshold) {
+//			CObject* newEnemy = new CObject(px, py, filename, maxHealth, attack);
+//			enemyArray[currentSize++] = newEnemy;
+//			timeElapsed = 0.f;
+//			timeThreshold = max(0.9f, timeThreshold - 0.02f); // Difficulty control
+//			DrawHealth(canvas);
+//		}
+//	}
+//
+//	void Update(GamesEngineeringBase::Window& canvas, CObject& player, CObject& bullet, float dt, const std::string& filename, int mapOffsetX, int mapOffsetY) {
+//		GenerateEnemy(canvas, dt, filename);
+//
+//		// define enemy speed
+//		int speed = static_cast<int>((70.0f * dt));
+//
+//		for (unsigned int i = 0; i < currentSize; i++) {
+//			if (enemyArray[i] != nullptr) {
+//				// Get the player's position relative to the screen after map offset
+//				float playerScreenX = player.GetX() - mapOffsetX;
+//				float playerScreenY = player.GetY() - mapOffsetY;
+//
+//				// Calculate direction between the player and the enemy, considering map offset
+//				float dx = playerScreenX - enemyArray[i]->GetX();
+//				float dy = playerScreenY - enemyArray[i]->GetY();
+//				float distance = sqrtf(dx * dx + dy * dy);
+//
+//				// If distance > 0, move the enemy toward the player
+//				if (distance > 0.0f) {
+//					int moveX = static_cast<int>((dx / distance) * speed);
+//					int moveY = static_cast<int>((dy / distance) * speed);
+//
+//					// Move the enemy towards the player with adjusted direction
+//					enemyArray[i]->Update(moveX, moveY);
+//				}
+//
+//				// Handle enemy death and collision with player
+//				if (enemyArray[i]->currentHealth <= 0) {
+//					CObject* enemyDelete = enemyArray[i];
+//					enemyArray[i] = nullptr;
+//					delete enemyDelete;
+//					kills++;
+//					score += award;
+//				}
+//				else if (enemyArray[i]->CircleCollidor(player, 1)) {
+//					attackElapsed += dt;
+//					if (attackElapsed > attackThreshold) {
+//						player.decreaseHealth(attack);
+//						attackElapsed = 0.f;
+//					}
+//				}
+//			}
+//			DeleteOutBound(canvas, i);
+//		}
+//	}
+//
+//	void Draw(GamesEngineeringBase::Window& canvas, int mapOffsetX, int mapOffsetY) {
+//		for (unsigned int i = 0; i < currentSize; i++) {
+//			if (enemyArray[i] != nullptr) {
+//				// Apply map offset only when drawing
+//				int drawX = enemyArray[i]->GetX() + mapOffsetX;
+//				int drawY = enemyArray[i]->GetY() + mapOffsetY;
+//				enemyArray[i]->Draw(canvas, drawX, drawY);
+//			}
+//		}
+//	}
+//
+//	void DrawHealth(GamesEngineeringBase::Window& canvas) override {
+//		DrawHealthBar(canvas, px, py, currentHealth, maxHealth, 83, 3);
+//	}
+//};
+
+
+
+class Enemy2 :public Enemy {
+public:
+	Enemy2(int _x, int _y) : Enemy(_x,_y){
+
+	};
+
+	int maxHealth = 50;
+	int currentHealth;
+	GamesEngineeringBase::Image sprite;
+	CObject* enemyArray[50];
+	unsigned int currentSize = 0;
+	int px = 200;
+	int py = 200;
+	int x = 0;
+	int y = 0;
+	float timeElapsed = 0.f; // time since last enemy created
+	float timeThreshold = 5.f; // the time to next enemy creation
+	int offset = 200;
+	int award = 30;
+};
+
+class Enemy3 : public Enemy {
+public:
+	Enemy3(int _x, int _y) : Enemy(_x, _y) {
+
+	};
+	int maxHealth = 70;
+	int currentHealth;
+	GamesEngineeringBase::Image sprite;
+	CObject* enemyArray[30];
+	unsigned int currentSize = 0;
+	int px = 200;
+	int py = 200;
+	int x = 0;
+	int y = 0;
+	float timeElapsed = 0.f; // time since last enemy created
+	float timeThreshold = 15.f; // the time to next enemy creation
+	int offset = 200;
+	int award = 50;
 };
 
 
 
-	//void UIchoice(bool& running, bool&running1) {
-	//	GamesEngineeringBase::Window menu;
-	//	menu.create(1024, 768, "menu");
-	//	bool menu1 = true;
-	//	while (menu1) {
-	//		CObject logo(menu.getWidth() / 2, menu.getHeight(), "Resources/L.png");
-	//		CObject choice1(menu.getWidth() / 2, menu.getHeight() / 5 * 4, "Resources/L.png");
-	//		CObject choice2(menu.getWidth() / 2, menu.getHeight() / 5 * 3, "Resources/L.png");
-	//		CObject choice3(menu.getWidth() / 2, menu.getHeight() / 5 * 2, "Resources/L.png");
-	//		CObject notice(menu.getWidth() / 2, menu.getHeight() / 5, "Resources/L.png"); // notice player to press keys
-	//		if (score > 1000){
-	//			CObject egg(menu.getWidth()/5, menu.getHeight() , "Resources/L.png"); // eggs to hiddern level
-	//		}
-	//		if (menu.keyPressed(VK_ESCAPE)) break;
-	//		if (menu.keyPressed('1')) running = true;
-	//		if (menu.keyPressed('2')) running1 = true;
-	//	}
-	//
-	//}
+
+class Enemy4 : public Enemy {
+public:
+	Enemy4(int _x, int _y) : Enemy(_x, _y) {
+
+	};
+	int maxHealth = 10;
+	int currentHealth;
+	GamesEngineeringBase::Image sprite;
+	CObject* enemyArray[5];
+	unsigned int currentSize = 0;
+	int px = 200;
+	int py = 200;
+	int x = 0;
+	int y = 0;
+	float timeElapsed = 0.f; // time since last enemy created
+	float timeThreshold = 12.f; // the time to next enemy creation
+	int offset = 200;
+	int award = 40;
+	float attackElapsed = 0.f; // time since last attack
+	float attackThreshold = 5.f; // the time to next attack
+
+	void GenerateEnemy(GamesEngineeringBase::Window& canvas, float dt, string filename) {
+		px = rand() % canvas.getWidth();
+		py = rand() % canvas.getHeight();
+		timeElapsed += dt;
+		if (currentSize < maxSize1) {
+			if (timeElapsed > timeThreshold) {
+				CObject* newEnemy = new CObject(px, py, filename, maxHealth, attack);
+				cout << "Enemy created: " << currentSize << endl;
+				// Save address of new enemy to array
+				enemyArray[currentSize++] = newEnemy;
+				// reset generation parameter
+				timeElapsed = 0.f;
+				timeThreshold -= 0.02f;
+				// difficulty control
+				timeThreshold = max(5.f, timeThreshold);
+
+				DrawHealth(canvas);
+			}
+		}
+		else {
+			cout << "Last Enemy!!!" << endl;
+		}
+	}
+
+	void Update(GamesEngineeringBase::Window& canvas, CObject& player, CObject bullet, float dt, string filename) {
+
+
+		GenerateEnemy(canvas, dt, filename);
+		for (unsigned int i = 0; i < currentSize; i++) {
+			if (enemyArray[i]->CircleCollidor(player,1) || enemyArray[i]->CircleCollidor(bullet,1)) {
+				// fight(player);
+				//if (currentHealth <= 0) {
+				CObject* enemyDelete = enemyArray[i];
+				enemyArray[i] = nullptr;
+				delete enemyDelete;
+				kills++;
+				score += 10;
+			}
+		}
+	}
+};
+
+
 
 int level[5] = { 1,2,3,4,5 };
 int const weaponLevel = 1;
 int maxBullet = weaponLevel;
 int const numberBullets = 1000;
 
+class AoeAttack : public CObject {
+public:
+	float timeElapsed = 0.f;
+	float timeThreshold = 5.f; // the time to next available attack
+
+	void Aoe(Enemy& enemy, int damage, int dt) {
+		timeElapsed += dt;
+		// define empty array for enemy and their blood
+		CObject* targetEnemies[3] = { nullptr, nullptr, nullptr }; // pointer to each enemy
+		int targetHealth[3] = { 0,0,0 };
+		// target enemy
+		for (unsigned int i = 0; i < enemy.currentSize; i++) {
+			if (enemy.enemyArray[i] != nullptr) {
+				// check and compare their current health
+				int health = enemy.enemyArray[i]->currentHealth;
+
+				if (health > targetHealth[0]) {
+					// push current values back
+					targetEnemies[2] = targetEnemies[1];
+					targetHealth[2] = targetHealth[1];
+					targetEnemies[1] = targetEnemies[0];
+					targetHealth[1] = targetHealth[0];
+					// assign new values and health
+					targetEnemies[0] = enemy.enemyArray[i];
+					targetHealth[0] = health;
+				}
+				else if (health > targetHealth[1]) {
+
+					targetEnemies[2] = targetEnemies[1];
+					targetHealth[2] = targetHealth[1];
+					targetEnemies[1] = enemy.enemyArray[i];
+					targetHealth[1] = health;
+				}
+				else if (health > targetHealth[2]) {
+					targetEnemies[2] = enemy.enemyArray[i];
+					targetHealth[2] = health;
+				}
+				else { cout << "No AOE target" << endl; }
+			}
+		}
+		// executive attack
+		if (targetEnemies != nullptr) {
+			for (unsigned int i = 0; i < 3; i++) {
+				targetEnemies[i]->decreaseHealth(damage);
+				cout << "AOE attack finished" << endl;
+			}
+			timeElapsed = 0.f;
+			timeThreshold -= 0.02f;
+		}
+	}
+};
 
 
-// 生成 xy 按照玩家走, 传入sprite即可,等级是按照时间或者击杀人数增加的
+
 class bullet : public CObject {
-	
-	
+
+public:	
+	int attack = 30;
 	float timeElapsed = 0.f; // time since last bullet
 	float timeThreshold = 2.5f; // the time to next bullet generation
-
-
-	
-public:	
+	bool isCollision;
 	CObject* bullets[numberBullets];
 	unsigned int currentNumber = 0;
 	//float dx = 0.f;
@@ -887,23 +1104,24 @@ public:
 	bullet() {
 
 	}
-	// Enemy enemy;
+
 	// bullet targeted to enemy
-	void GenerateBullet(GamesEngineeringBase::Window& canvas, CObject& player, Enemy& enemy,float dt) {
+	void GenerateBullet(GamesEngineeringBase::Window& canvas, CObject& player, Enemy& enemy, Enemy2& enemy2, Enemy3& enemy3, Enemy4& enemy4, float dt) {
 		// the number of bullet targeted to enemy depends on weaponLevel
-		
+
 		timeElapsed += dt;
 		if (currentNumber < numberBullets) {
-			
+
 			if (timeElapsed > timeThreshold) {
-				CObject* closestEnemy = FindClosestEnemy(canvas,player, enemy);
+				CObject* closestEnemy = FindClosestEnemy(canvas, player, enemy, enemy2, enemy3, enemy4);
+				
 				//cout << "value of cloest enemy after findcloest enemy is" << closestEnemy << endl;
 
 				// loop from existing enemy to find closest one;
 				if (closestEnemy != nullptr) {
 					// cout << "4th if running" << endl;
 					// create new bullet start from player's position
-					CObject* newBullet = new CObject(player.GetX()+player.GetWidth()/2, player.GetY()+player.GetHeight()/2, "Resources/bullet1.png",0,20);
+					CObject* newBullet = new CObject(player.GetX() + player.GetWidth() / 2, player.GetY() + player.GetHeight() / 2, "Resources/bullet1.png", 0, 20);
 					//cout << "Bullet created" << endl;
 					bullets[currentNumber++] = newBullet;
 
@@ -916,43 +1134,45 @@ public:
 		}
 	}
 
-	CObject* FindClosestEnemy(GamesEngineeringBase::Window &canvas,CObject& player, Enemy& enemy) {
+	CObject* FindClosestEnemy(GamesEngineeringBase::Window &canvas,CObject& player,Enemy& enemy , Enemy2& enemy2, Enemy3& enemy3, Enemy4& enemy4) {
 		CObject* closestEnemy = nullptr;
 		
 		float smallestDistance = canvas.getHeight()/2;
-		for (unsigned int i = 0; i < enemy.currentSize; i++) {
-			// searching enemy which has already been generated
-			if (enemy.enemyArray[i] != nullptr) {
-				// calculate distance
-				float dx = player.GetX() - enemy.enemyArray[i]->GetX();
-				float dy = player.GetY() - enemy.enemyArray[i]->GetY();
-				float distance = sqrtf(dx * dx + dy * dy);
-				if (distance < smallestDistance) {
-					smallestDistance = distance;
-					closestEnemy = enemy.enemyArray[i];
-					
-					// cout << "value of cloest enemy in findcloest enemy is" << closestEnemy << endl;
-				}
-			}
 
+		Enemy* enemies[] = { &enemy, &enemy2, &enemy3,&enemy4 };
+		for (Enemy* enemy : enemies) {
+			for (unsigned int i = 0; i < enemy->currentSize; i++) {
+				// searching enemy which has already been generated
+				if (enemy->enemyArray[i] != nullptr) {
+					// calculate distance
+					float dx = player.GetX() - enemy->enemyArray[i]->GetX();
+					float dy = player.GetY() - enemy->enemyArray[i]->GetY();
+					float distance = sqrtf(dx * dx + dy * dy);
+					if (distance < smallestDistance) {
+						smallestDistance = distance;
+						closestEnemy = enemy->enemyArray[i];
+
+						// cout << "value of cloest enemy in findcloest enemy is" << closestEnemy << endl;
+					}
+				}
+
+			}
 		}
 		return closestEnemy;
-		
-
 	}
 
 
-	void Update(GamesEngineeringBase::Window& canvas, Enemy& enemy, CObject& player, float dt) {
+	void Update(GamesEngineeringBase::Window& canvas, Enemy& enemy, Enemy2& enemy2, Enemy3& enemy3, Enemy4& enemy4, CObject& player, float dt) {
 		// make bullet fly to enemy
 
-		GenerateBullet(canvas, player, enemy, dt);
+		GenerateBullet(canvas, player, enemy, enemy2, enemy3, enemy4, dt);
 		// cout << "value of cloest enemy update enemy is" << closestEnemy << endl;
 		int speed = 80.0f * dt;
 
 		for (unsigned int i = 0; i < currentNumber; i++) {
 			if (bullets[i] != nullptr) {
 				// Find the closest enemy for each bullet movement update
-				CObject* closestEnemy = FindClosestEnemy(canvas,player, enemy);
+				CObject* closestEnemy = FindClosestEnemy(canvas,player, enemy,enemy2,enemy3,enemy4);
 				// cout << "closest enemy is " << closestEnemy << endl;
 				if (closestEnemy != nullptr) {
 					float dx = closestEnemy->GetX() - bullets[i]->GetX()+25;
@@ -964,15 +1184,19 @@ public:
 						int moveX = static_cast<int>((dx / distance) * speed);
 						int moveY = static_cast<int>((dy / distance) * speed);
 						bullets[i]->Update(moveX, moveY);
-
-						if (bullets[i]->CircleCollidor(*closestEnemy)) {
+						isCollision = bullets[i]->CircleCollidor(*closestEnemy,0);
+						// cout << "closet enemy blood: " << closestEnemy->currentHealth;
+						if (isCollision || closestEnemy == nullptr) {
+							// cout << "bullet checking result is" << bullets[i]->CircleCollidor(*closestEnemy,0) << endl;
 							// If a collision is detected, delete this specific enemy
 							//cout << "enemy" << i << "is collision with player" << endl;
 							// CheckDeletedEnemy(canvas, i);
 							CObject* bulletDelete = bullets[i];
 							bullets[i] = nullptr;
 							delete bulletDelete;
-							cout << "bullet destroyed " << i << endl;
+							closestEnemy->decreaseHealth(attack);
+							
+
 						}
 					}
 				}
@@ -989,6 +1213,134 @@ public:
 
 };
 
+//class enemyBullet : public bullet {
+//public:
+//	
+//	void GenerateBullet(GamesEngineeringBase::Window& canvas, CObject& player, Enemy4& enemy, float dt) {
+//		// the number of bullet targeted to enemy depends on weaponLevel
+//
+//		timeElapsed += dt;
+//		if (currentNumber < numberBullets) {
+//
+//			if (timeElapsed > timeThreshold) {
+//				
+//					CObject* newBullet = new CObject(enemy.px, enemy.py / 2,"Resources/bullet1.png",1,10);
+//					//cout << "Bullet created" << endl;
+//					bullets[currentNumber++] = newBullet;
+//
+//					timeElapsed = 0.f;
+//					timeThreshold = 2; // generate bullets more frequent as level increases;
+//					
+//					//cout << "generate bullet finished" << endl;
+//				
+//			}
+//		}
+//	}
+//
+//	void Update(GamesEngineeringBase::Window& canvas, Enemy4& enemy, CObject& player, float dt) {
+//		// make bullet fly to enemy
+//
+//		GenerateBullet(canvas, player, enemy, dt);
+//		// cout << "value of cloest enemy update enemy is" << closestEnemy << endl;
+//		int speed = 30.0f * dt;
+//
+//		for (unsigned int i = 0; i < currentNumber; i++) {
+//			if (bullets[i] != nullptr) {
+//				// Find the closest enemy for each bullet movement update
+//				CObject* closestEnemy = FindClosestEnemy(canvas, player, enemy);
+//				// cout << "closest enemy is " << closestEnemy << endl;
+//				if (closestEnemy != nullptr) {
+//					float dx = player.GetX() - bullets[i]->GetX() + 25;
+//					float dy = player.GetY() - bullets[i]->GetY() + 50;
+//					float distance = sqrtf(dx * dx + dy * dy);
+//
+//					if (distance > 0.0f) {
+//
+//						int moveX = static_cast<int>((dx / distance) * speed);
+//						int moveY = static_cast<int>((dy / distance) * speed);
+//						bullets[i]->Update(moveX, moveY);
+//
+//						if (bullets[i]->CircleCollidor(player,0)) {
+//							// If a collision is detected, delete this specific enemy
+//							//cout << "enemy" << i << "is collision with player" << endl;
+//							// CheckDeletedEnemy(canvas, i);
+//							CObject* bulletDelete = bullets[i];
+//							bullets[i] = nullptr;
+//							delete bulletDelete;
+//							player.decreaseHealth(attack);
+//							cout << "bullet destroyed " << i << endl;
+//						}
+//					}
+//				}
+//			}
+//		}
+//	}
+//
+//};
+
+int currentLevel = 0;
+
+void levelup(int& currentLevel, int & score) {
+	currentLevel = score / 100;
+	currentLevel = min(currentLevel, 5); // control the level scope to be limited for design purpose
+	// some sfx to notify upgrade!
+}
+// !global parameters
+int aoeDamage = 20 * currentLevel;
+
+class system {
+	void save(CObject& player, Enemy& enemy) {
+		ofstream outfile("player.dat", ios::binary);
+		if (!outfile) {
+			cout << "saving error!" << endl;
+		}
+		outfile << "global variables:" << endl;
+		outfile << currentLevel << " " << score << " " << endl;
+
+		outfile << "player:" << endl;
+		outfile << player.GetX() << " " << player.GetY() << " " << player.currentHealth << endl;
+
+		outfile << "Enemy: " << endl;
+		outfile << enemy.currentSize << endl;
+		// save each enemy alive
+		for (unsigned int i = 0; i < enemy.currentSize; i++) {
+			if (enemy.enemyArray[i] != nullptr) {
+				outfile << enemy.enemyArray[i]->x << " " << enemy.enemyArray[i]->y << " " << enemy.enemyArray[i]->currentHealth << endl;
+			}
+		}
+	}
+
+	bool load() {
+	ifstream infile("player.dat", ios::binary);
+		if (!infile) {
+			cout << "loading error!" << endl;
+			return false;
+		}
+
+	}
+
+	void UIchoice(bool& running, bool&running1) {
+	GamesEngineeringBase::Window menu;
+	menu.create(1024, 768, "menu");
+	bool menu1 = true;
+	while (menu1) {
+		CObject logo(menu.getWidth() / 2, menu.getHeight(), "Resources/L.png",0,0);
+		CObject choice1(menu.getWidth() / 2, menu.getHeight() / 5 * 4, "Resources/L.png", 0, 0);
+		CObject choice2(menu.getWidth() / 2, menu.getHeight() / 5 * 3, "Resources/L.png", 0, 0);
+		CObject choice3(menu.getWidth() / 2, menu.getHeight() / 5 * 2, "Resources/L.png", 0, 0);
+		CObject notice(menu.getWidth() / 2, menu.getHeight() / 5, "Resources/L.png", 0, 0); // notice player to press keys
+		if (score > 1000){
+			CObject egg(menu.getWidth()/5, menu.getHeight() , "Resources/L.png", 0, 0); // eggs to hiddern level
+		}
+		if (menu.keyPressed(VK_ESCAPE)) break;
+		if (menu.keyPressed('1')) running = true;
+		if (menu.keyPressed('2')) running1 = true;
+	}
+
+}
+};
+
+
 
 
 int main() {
@@ -998,9 +1350,11 @@ int main() {
 	canvas.create(1024, 768, "Survivor");
 
 	// construct objects
-	CObject player(canvas.getWidth() / 2, canvas.getHeight() / 2, "Resources/L.png",100,0);
+	// CObject player(canvas.getWidth() / 2, canvas.getHeight() / 2, "Resources/L.png",100,0);
 	int x = 0, y = 0; // position of hero
-	Enemy enemy(x,y);
+
+	// enemyBullet enemyShoot;
+	CObject player(canvas.getWidth() / 2, canvas.getHeight() / 2, "Resources/L.png",100,0);
 	world w("Resources/tiles.txt");
 	//world w;
 	// GamesEngineeringBase::Timer tim;
@@ -1009,13 +1363,17 @@ int main() {
 	bool running1 = false;
 	tileSet tiles;
 	tiles.Load();
-
+	AoeAttack aoe;
+	Enemy enemy(x, y);
+	Enemy2 enemy2(x, y);
+	Enemy3 enemy3(x, y);
+	Enemy4 enemy4(x, y);
 	GamesEngineeringBase::SoundManager bgm;
 	// bgm.loadMusic();
 	int count = 0;
 	// game runniung
 	while (running) {
-
+		levelup(currentLevel, score);
 		// variables needs to be updated each frame
 
 
@@ -1037,6 +1395,11 @@ int main() {
 		if (canvas.keyPressed('S')) y += 2;
 		if (canvas.keyPressed('A')) x -= 2;
 		if (canvas.keyPressed('D')) x += 2;
+		if (canvas.keyPressed('E')) {
+			if (enemy.enemyArray != nullptr && enemy.currentHealth != NULL) {
+				aoe.Aoe(enemy, aoeDamage, dt);
+			}
+		} 
 		if (canvas.keyPressed('Q')) alpha = !alpha;
 
 
@@ -1067,30 +1430,64 @@ int main() {
 				w.drawAlpha(canvas, x, y);
 			}
 			else {
-				w.draw(canvas, x, y);
+				w.draw(canvas, player, x, y);
 			}
 		// cout << "player x" << player.GetX() << endl;
-			enemy.Update(canvas, player, shoot,dt);
+			w.Tilecollider(player,x,y);
+
+			int mapOffsetX = x; // The x position of the map based on player input
+			int mapOffsetY = y; // The y position of the map based on player input
+
+			enemy.Update(canvas, player, shoot,dt, "Resources/slime0.png");
+			enemy2.Update(canvas, player, shoot,dt, "Resources/slimeGreen.png");
+			enemy3.Update(canvas, player, shoot,dt, "Resources/slimeRed.png");
 			
+			
+			/*
+			enemy.Update(canvas, player, shoot, dt, "Resources/slime0.png",  -mapOffsetX, -mapOffsetY);
+			enemy2.Update(canvas, player, shoot, dt, "Resources/slimeGreen.png",  -mapOffsetX, -mapOffsetY);
+			enemy3.Update(canvas, player, shoot, dt, "Resources/slimeRed.png", - mapOffsetX, -mapOffsetY);
+*/
+
+
+
+
+
+
+			//enemy4.Update(canvas, player, shoot, dt, "Resources/L4.png");
 			 //enemy.Collision(player);
+			//if (enemy4.currentSize > 0) {
+				//enemyShoot.Update(canvas, enemy4, player, dt);
+			//}
 
 
-			shoot.Update(canvas, enemy, player, dt);
-
+			shoot.Update(canvas, enemy, enemy2, enemy3, enemy4,player, dt);
+			// player.CheckPlayer(running, enemy);
 			player.Draw(canvas);
 			// cout << "player current health" << player.currentHealth << endl;
-			if (count == 0) {
-				player.testdecreaseHealth();
-				count = 1;
-			}
+			//if (count == 0) {
+			//	player.testdecreaseHealth();
+			//	count = 1;
+			//}
 
 			player.DrawHealth(canvas);
-			
+			//
 			enemy.Draw(canvas);
+			enemy2.Draw(canvas);
+			enemy3.Draw(canvas);
+
+			//enemy.Draw(canvas, -mapOffsetX, -mapOffsetY);
+			//enemy2.Draw(canvas, -mapOffsetX, -mapOffsetY);
+			//enemy3.Draw(canvas, -mapOffsetX, -mapOffsetY);
+
+
+
+
+			//enemy4.Draw(canvas);
 			// enemy.DrawHealth(canvas);
 			shoot.Draw(canvas);
-
-
+			//enemyShoot.Draw(canvas);
+		// 	cout << "score is: " << score << endl;
 			// w.collision(canvas, player, x, y);
 			
 			//w.CheckCollidor(player, x, y);
@@ -1100,7 +1497,7 @@ int main() {
 			
 			// w.collisiton(canvas, player);
 			//player.draw(canvas);
-
+			player.gameOver(running);
 			// Frame display
 			canvas.present();
 		}
