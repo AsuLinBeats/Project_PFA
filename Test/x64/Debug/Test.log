@@ -1,26 +1,43 @@
 ﻿  main.cpp
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(11,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(11,9): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(13,28): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(14,29): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(16,29): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(33,31): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(34,32): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(43,30): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(44,31): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(143,27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(288,27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(651,7): warning C4018: '>': signed/unsigned mismatch
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(653,7): warning C4018: '>': signed/unsigned mismatch
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(724,14): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(725,14): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(1140,26): warning C4244: 'initializing': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(1148,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(1149,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(1170,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(1178,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(1179,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(1400,31): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(302,1): warning C4715: 'tile::isWater': not all control paths return a value
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(157,1): warning C4715: 'CObject::CircleCollidor': not all control paths return a value
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(12,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(12,9): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(14,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(15,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(17,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(34,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(35,32): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(44,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(45,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(174,27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(351,27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(665,12): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(665,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(668,13): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(727,9): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(727,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(754,7): warning C4018: '>': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(756,7): warning C4018: '>': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(854,14): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(855,14): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1153,26): warning C4244: 'initializing': conversion from 'unsigned int' to 'float', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1161,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1162,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1183,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1191,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1192,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1374,15): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1375,15): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1387,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1388,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1401,31): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1402,31): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1415,31): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1416,31): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1429,31): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1430,31): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1623,31): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1751,31): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1543,8): warning C4101: 'fps': unreferenced local variable
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(365,1): warning C4715: 'tile::isWater': not all control paths return a value
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(188,1): warning C4715: 'CObject::CircleCollidor': not all control paths return a value
   Test.vcxproj -> C:\Users\Davi\source\Project_PFA\x64\Debug\Test.exe

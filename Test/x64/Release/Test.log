@@ -1,41 +1,50 @@
 ﻿  main.cpp
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(11,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(11,9): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(13,28): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(14,29): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(16,29): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(35,31): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(36,32): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(45,30): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(46,31): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(258,27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(633,7): warning C4018: '>': signed/unsigned mismatch
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(635,7): warning C4018: '>': signed/unsigned mismatch
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(704,14): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(705,14): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(1004,26): warning C4244: 'initializing': conversion from 'unsigned int' to 'float', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(1009,14): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(1010,14): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(1030,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(1038,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(1039,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(1101,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(1109,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(1110,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(1228,29): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\Davi\source\Project_PFA\Test\main.cpp(127,27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-      C:\Users\Davi\source\Project_PFA\Test\main.cpp(127,27):
-      the template instantiation context (the oldest one first) is
-          C:\Users\Davi\source\Project_PFA\Test\main.cpp(715,25):
-          see reference to function template instantiation 'bool CObject::CircleCollidor<CObject>(T &)' being compiled
-          with
-          [
-              T=CObject
-          ]
-  
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(12,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(12,9): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(14,28): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(15,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(17,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(34,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(35,32): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(44,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(45,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(150,27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(327,27): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(641,12): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(641,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(644,13): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(703,9): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(703,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(730,7): warning C4018: '>': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(732,7): warning C4018: '>': signed/unsigned mismatch
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(830,14): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(831,14): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(840,29): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(843,32): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(846,29): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(849,32): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1129,26): warning C4244: 'initializing': conversion from 'unsigned int' to 'float', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1137,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1138,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1159,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1167,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1168,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1350,15): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1351,15): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1363,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1364,30): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1377,31): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1378,31): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1391,31): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1392,31): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1405,31): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1406,31): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1595,31): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1722,31): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Davi\source\Project_PFA\Test\main.cpp(1519,8): warning C4101: 'fps': unreferenced local variable
   Generating code
-  17 of 465 functions ( 3.7%) were compiled, the rest were copied from previous compilation.
-    3 functions were new in current compilation
-    14 functions had inline decision re-evaluated but remain unchanged
+  2 of 506 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Test.vcxproj -> C:\Users\Davi\source\Project_PFA\x64\Release\Test.exe
