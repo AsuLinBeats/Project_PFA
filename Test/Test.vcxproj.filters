@@ -203,6 +203,15 @@
     <Image Include="Resources\slimeRed.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resources\enemy4_0.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\bullet2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\player1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\projectile1.svg">

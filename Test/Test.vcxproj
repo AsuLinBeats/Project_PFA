@@ -24,6 +24,7 @@
     <ProjectGuid>{d0ce7240-998a-4743-a0d5-37c86e16e335}</ProjectGuid>
     <RootNamespace>Test</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>PFA_Project</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -179,10 +180,13 @@
     <Image Include="Resources\alpha8.png" />
     <Image Include="Resources\alpha9.png" />
     <Image Include="Resources\bullet1.PNG" />
+    <Image Include="Resources\bullet2.png" />
+    <Image Include="Resources\enemy4_0.png" />
     <Image Include="Resources\L.png" />
     <Image Include="Resources\L2.png" />
     <Image Include="Resources\L3.PNG" />
     <Image Include="Resources\L4.PNG" />
+    <Image Include="Resources\player1.png" />
     <Image Include="Resources\slime0.png" />
     <Image Include="Resources\slime1.png" />
     <Image Include="Resources\slime2.png" />
